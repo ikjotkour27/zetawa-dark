@@ -4,8 +4,15 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ['https://zetawa-dark.vercel.app'], // your frontend URL
+  methods: ['GET', 'POST']
+}));
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('Backend is running ✅');
+});
 
 // POST route
 app.post('/contact', async (req, res) => {
