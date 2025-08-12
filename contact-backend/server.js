@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors({
-  origin: ['https://zetawa-dark.vercel.app'], // your frontend URL
+  origin: ['https://zetawa.com', 'https://zetawa-dark.vercel.app'],
   methods: ['GET', 'POST']
 }));
 app.use(express.json());
