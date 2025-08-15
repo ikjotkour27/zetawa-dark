@@ -29,26 +29,37 @@ const MainPage = () => {
   ];
 
   const services = [
+    // {
+    //   title: "AI & Machine Learning",
+    //   description: "Intelligent automation and predictive analytics solutions",
+    //   icon: "🤖"
+    // },
+    // {
+    //   title: "Cloud Solutions",
+    //   description: "Scalable cloud infrastructure and migration services",
+    //   icon: "☁️"
+    // },
+    // {
+    //   title: "Cybersecurity",
+    //   description: "Advanced threat protection and risk management",
+    //   icon: "🔒"
+    // },
     {
-      title: "AI & Machine Learning",
-      description: "Intelligent automation and predictive analytics solutions",
-      icon: "🤖"
-    },
-    {
-      title: "Cloud Solutions",
-      description: "Scalable cloud infrastructure and migration services",
-      icon: "☁️"
-    },
-    {
-      title: "Cybersecurity",
-      description: "Advanced threat protection and risk management",
-      icon: "🔒"
-    },
-    {
-      title: "Digital Transformation",
-      description: "End-to-end modernization and optimization",
-      icon: "🚀"
-    }
+  title: "Design",
+  description: "Our web design team has ample years of experience in the core areas of design to build a website that you need.",
+  icon: "🎨"
+},
+{
+  title: "Development",
+  description: "Looking out for customized solutions for your websites? Our team will develop and deliver a website that'll serve your purpose.",
+  icon: "💻"
+},
+{
+  title: "Marketing",
+  description: "With researched digital marketing, we will ensure that new customers and clients are able to find your business",
+  icon: "📈" 
+}
+
   ];
 
   return (
@@ -186,8 +197,11 @@ const MainPage = () => {
           <h1 style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '1rem' }}>
             Welcome to <span style={{color: '#ffebee'}}>ZETAWA DARK</span>
           </h1>
-          <p style={{ fontSize: '1.25rem', opacity: '0.9', maxWidth: '600px', margin: '0 auto 2rem auto' }}>
-            Your trusted partner in innovative solutions and exceptional service delivery
+          <p style={{ fontSize: '1.5rem', opacity: '0.9', maxWidth: '600px', margin: '0 auto 3rem auto' }}>
+            A Social Software Agency That Thrives on Your Success
+          </p>
+          <p style={{ fontSize: '0.8rem', opacity: '0.7', maxWidth: '900px', margin: '0 auto 1rem auto' }}>
+            If you are looking for an agency to help you create a remarkable presence online, you’ve come to the right place. We can help you take your business to the next level.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button 
@@ -296,7 +310,7 @@ const MainPage = () => {
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 style={{ fontSize: '2.5rem', fontWeight: '600', color: '#2d2d2d', marginBottom: '1rem' }}>
-              Our Services
+              Hire Us For
             </h2>
             <p style={{ fontSize: '1.1rem', color: '#666' }}>
               Comprehensive solutions for your digital transformation journey
@@ -327,6 +341,7 @@ const MainPage = () => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
+                onClick={() => navigate('/contact')}
               >
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>
                   {service.icon}
@@ -375,7 +390,7 @@ const MainPage = () => {
                 <span style={{ color: 'var(--primary-red)', fontWeight: '600' }}>New Release</span>
               </div>
               <h3 style={{ fontSize: '1.3rem', fontWeight: '600', color: '#2d2d2d', marginBottom: '1rem' }}>
-                Company Expansion
+                Company Expansion And Updates
               </h3>
               <p style={{ color: '#666', marginBottom: '1rem', lineHeight: '1.6' }}>
                 We're excited to announce our expansion into new markets and services.
@@ -410,7 +425,7 @@ const MainPage = () => {
                 <span style={{ color: 'var(--primary-red)', fontWeight: '600' }}>Upcoming Event</span>
               </div>
               <h3 style={{ fontSize: '1.3rem', fontWeight: '600', color: '#2d2d2d', marginBottom: '1rem' }}>
-                Annual Conference 2025
+                Annual Conference 2025 and other Events
               </h3>
               <p style={{ color: '#666', marginBottom: '1rem', lineHeight: '1.6' }}>
                 Join us for our annual conference featuring industry leaders and innovation.

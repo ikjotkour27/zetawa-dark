@@ -1,66 +1,68 @@
 import React, { useState } from 'react';
+import { SiGmail } from "react-icons/si";
+import image from '../assets/image.png';
 import { 
   User, 
   Mail, 
   Phone, 
   MapPin, 
   Calendar, 
-  Briefcase, 
+  Briefcase,  
   Award, 
   Users, 
   Target,
   ArrowLeft,
   Linkedin,
   Twitter,
-  Github
+  Github,
+  Instagram
 } from 'lucide-react';
 
 const AdminProfile = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
   const adminData = {
-    name: "John Anderson",
+    name: "Tabrez Alam",
     position: "Chief Executive Officer",
     department: "Executive Leadership",
-    email: "john.anderson@zetawadark.com",
-    phone: "+1 (555) 123-4567",
-    location: "New York, NY",
-    joinDate: "January 2020",
-    employeeId: "ZD001",
-    profileImage: "/api/placeholder/200/200",
-    bio: "John Anderson is the Chief Executive Officer of ZETAWA DARK PRIVATE LIMITED, bringing over 15 years of experience in technology leadership and business strategy. He has successfully led multiple organizations through digital transformation initiatives and has a proven track record of driving innovation and growth.",
+    email: "tabrez.zeta@gmail.com",
+    phone: "+91 70042 65718",
+    location: " Dhaka Champaran district , Bihar, India",
+    joinDate: "January 2023",
+    // employeeId: "ZD001",
+    profileImage: image, // Assuming you have an image in your assets folder
+    bio: "Tabrez Alam: The Rising Star of NIT Srinagar and a Beacon of Generosity . In a world where personal achievements often take center stage, Tabrez Alam, an 8th-semester student from the Department of Information Technology at NIT Srinagar, is making headlines for not just his success but his selflessness. Hailing from Dhaka Champaran district in Bihar, Tabrez has become an inspiration for his peers with his extraordinary achievements and his commitment to giving back to society.",
     experience: [
       {
         title: "Chief Executive Officer",
         company: "ZETAWA DARK PRIVATE LIMITED",
-        period: "Jan 2020 - Present",
+        period: "Nov 2024 - Present",
         description: "Leading the company's strategic vision and overseeing all operations, driving growth and innovation across all business units."
-      },
-      {
-        title: "Senior Vice President",
-        company: "TechVision Solutions",
-        period: "Mar 2015 - Dec 2019",
-        description: "Managed multiple product lines and led cross-functional teams to deliver cutting-edge technology solutions."
-      },
-      {
-        title: "Director of Operations",
-        company: "InnovateTech Corp",
-        period: "Jun 2012 - Feb 2015",
-        description: "Streamlined operations and implemented process improvements that resulted in 40% efficiency gains."
       }
+      // {
+      //   title: "Senior Vice President",
+      //   company: "TechVision Solutions",
+      //   period: "Mar 2015 - Dec 2019",
+      //   description: "Managed multiple product lines and led cross-functional teams to deliver cutting-edge technology solutions."
+      // },
+      // {
+      //   title: "Director of Operations",
+      //   company: "InnovateTech Corp",
+      //   period: "Jun 2012 - Feb 2015",
+      //   description: "Streamlined operations and implemented process improvements that resulted in 40% efficiency gains."
+      // }
     ],
     qualifications: [
-      "MBA in Business Administration - Harvard Business School",
-      "Bachelor of Science in Computer Science - MIT",
-      "Certified Project Management Professional (PMP)",
-      "Six Sigma Black Belt Certification"
+      "National Institute of Technology, Srinagar - B.Tech in Information Technology",
+      "Resonance Eduventures Limited ",
+      "W3webschool",
+      // "Six Sigma Black Belt Certification"
     ],
-    achievements: [
-      "Led company to 300% revenue growth over 5 years",
-      "Recipient of 'CEO of the Year' award 2023",
-      "Successfully expanded company operations to 15 countries",
-      "Implemented industry-leading sustainability initiatives"
-    ],
+    achievements:[
+    "Identified a critical bug in the MobiKwik digital payment application",
+    "Earned a ₹1 lakh cash prize under the Responsible Disclosure Program",
+    "Received a certificate of appreciation from MobiKwik"
+  ],
     responsibilities: [
       "Strategic planning and business development",
       "Board relations and investor communications",
@@ -69,9 +71,9 @@ const AdminProfile = () => {
       "Public relations and stakeholder management"
     ],
     socialLinks: {
-      linkedin: "https://linkedin.com/in/johndanderson",
-      twitter: "https://twitter.com/johndanderson",
-      github: "https://github.com/johndanderson"
+      linkedin: "https://www.linkedin.com/in/tabrez-alam-59b6b61b3/"
+      // twitter: "https://twitter.com/johndanderson",
+      // github: "https://github.com/johndanderson"
     }
   };
 
@@ -87,10 +89,10 @@ const AdminProfile = () => {
       fontFamily: 'system-ui, -apple-system, sans-serif',
       backgroundColor: '#ffffffff',
       minHeight: '100vh',
-      padding: '2rem 0'
+      // padding: '2rem 0'
     }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-        <button 
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0.25rem' }}>
+        {/* <button 
           onClick={() => window.history.back()}
           style={{
             display: 'inline-flex',
@@ -110,14 +112,14 @@ const AdminProfile = () => {
         >
           <ArrowLeft size={20} />
           ZETAWA DARK
-        </button>
+        </button> */}
         
         {/* Profile Header */}
         <div style={{
           background: 'linear-gradient(135deg, #7e3a41ff, #884a51ff)',
           borderRadius: '12px',
           padding: '3rem 2rem',
-          marginBottom: '2rem',
+          marginBottom: '4rem',
           color: 'white',
           position: 'relative',
           overflow: 'hidden',
@@ -141,19 +143,30 @@ const AdminProfile = () => {
             position: 'relative',
             zIndex: 1
           }}>
-            <div style={{
-              width: '120px',
-              height: '120px',
-              borderRadius: '50%',
-              border: '4px solid rgba(255, 255, 255, 0.2)',
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '3rem'
-            }}>
-              <User size={48} />
-            </div>
+           <div
+          style={{
+            width: '120px',
+            height: '120px',
+            borderRadius: '50%',
+            border: '4px solid rgba(255, 255, 255, 0.2)',
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            overflow: 'hidden' // important to make the image stay inside the circle
+          }}
+        >
+          <img
+            src={adminData.profileImage} // "/image.png" from your public folder
+            alt="Profile"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover'
+            }}
+          />
+        </div>
+
             
             <div>
               <h1 style={{ 
@@ -203,88 +216,52 @@ const AdminProfile = () => {
               </div>
               
               <div style={{ display: 'flex', gap: '1rem' }}>
-                <a 
-                  href={adminData.socialLinks.linkedin} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    color: 'white',
-                    textDecoration: 'none',
-                    transition: 'all 0.3s ease'
-                  }}
-                  onMouseOver={(e) => {
-                    e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-                    e.target.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                    e.target.style.transform = 'translateY(0)';
-                  }}
-                >
-                  <Linkedin size={20} />
-                </a>
-                <a 
-                  href={adminData.socialLinks.twitter} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    color: 'white',
-                    textDecoration: 'none',
-                    transition: 'all 0.3s ease'
-                  }}
-                  onMouseOver={(e) => {
-                    e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-                    e.target.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                    e.target.style.transform = 'translateY(0)';
-                  }}
-                >
-                  <Twitter size={20} />
-                </a>
-                <a 
-                  href={adminData.socialLinks.github} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    color: 'white',
-                    textDecoration: 'none',
-                    transition: 'all 0.3s ease'
-                  }}
-                  onMouseOver={(e) => {
-                    e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-                    e.target.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                    e.target.style.transform = 'translateY(0)';
-                  }}
-                >
-                  <Github size={20} />
-                </a>
+                {[
+                  { icon: <Linkedin size={20} />, link: adminData.socialLinks.linkedin },
+                  { icon: <Instagram size={20} />, link: adminData.socialLinks.twitter },
+                 { icon: <SiGmail size={20} />, link: adminData.socialLinks.gmail }
+
+                ].map((item, index) => (
+                  <a
+                    key={index}
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      textDecoration: 'none',
+                      transition: 'background-color 0.3s ease'
+                    }}
+                  >
+                    <span
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'white',
+                        transition: 'transform 0.3s ease, color 0.3s ease'
+                      }}
+                      onMouseOver={(e) => {
+                        // e.target.style.color = '#000000ff'; // Example: change icon color
+                        e.target.style.transform = 'translateY(-2px)';
+                      }}
+                      onMouseOut={(e) => {
+                        e.target.style.color = 'white';
+                        e.target.style.transform = 'translateY(0)';
+                      }}
+                    >
+                      {item.icon}
+                    </span>
+                  </a>
+                ))}
               </div>
+
             </div>
           </div>
         </div>
@@ -308,7 +285,7 @@ const AdminProfile = () => {
                 onClick={() => setActiveTab(tab.id)}
                 style={{
                   flex: 1,
-                  padding: '1.5rem 1rem',
+                  padding: '1.5rem 0.3rem',
                   backgroundColor: activeTab === tab.id ? '#7e3a41ff' : 'transparent',
                   border: 'none',
                   color: activeTab === tab.id ? 'white' : '#666',

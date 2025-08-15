@@ -115,7 +115,7 @@ const Certifications = () => {
     }}>
       <div style={{ borderBottom: '3px solid var(--primary-red)', paddingBottom: '20px', marginBottom: '30px' }}>
         <h2 style={{ color: 'var(--primary-red)', fontWeight: 'bold', margin: '0' }}>ZETAWA DARK</h2>
-        <p style={{ color: '#666', fontSize: '14px', margin: '5px 0 0 0' }}>Certificate of Completion</p>
+        <p style={{ color: '#666', fontSize: '14px', margin: '15px 0 0 0' }}>Certificate of Completion</p>
       </div>
       
       <div style={{ margin: '30px 0' }}>
@@ -163,7 +163,7 @@ const Certifications = () => {
         position: 'relative'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <button 
+          {/* <button 
             onClick={() => window.history.back()}
             style={{
               position: 'absolute',
@@ -188,7 +188,7 @@ const Certifications = () => {
           >
             <ArrowLeft size={20} />
             Back to Home
-          </button>
+          </button> */}
 
           <div style={{ textAlign: 'center', marginTop: '2rem' }}>
             <h1 className="hero-title" style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '1rem' }}>

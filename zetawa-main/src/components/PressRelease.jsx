@@ -170,35 +170,6 @@ const PressRelease = () => {
               ZETAWA DARK
             </span>
           </div>
-      
-          <button 
-            style={{
-              backgroundColor: 'transparent',
-              color: 'white',
-              border: '2px solid white',
-              padding: '0.75rem 1.5rem',
-              borderRadius: '8px',
-              fontSize: '1rem',
-              fontWeight: '600',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              transition: 'all 0.3s ease'
-            }}
-            onClick={handleHomeClick}
-            onMouseOver={(e) => {
-              e.target.style.backgroundColor = 'white';
-              e.target.style.color = 'var(--primary-red)';
-            }}
-            onMouseOut={(e) => {
-              e.target.style.backgroundColor = 'transparent';
-              e.target.style.color = 'white';
-            }}
-          >
-            <ArrowLeft size={20} />
-            Back to Home
-          </button>
         </div>
 
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
@@ -249,322 +220,279 @@ const PressRelease = () => {
       {/* Main Content Section */}
       <section style={{ padding: '3rem 0', backgroundColor: '#f8f9fa' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'minmax(280px, 350px) 1fr',
-            gap: '2rem',
-            '@media (max-width: 768px)': {
-              gridTemplateColumns: '1fr',
-              gap: '1.5rem'
-            }
-          }}>
-            
-            {/* Sidebar */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              {/* Notification Banner */}
-              {/* <div style={{
-                background: 'linear-gradient(135deg, var(--primary-red), #2d3748)',
-                color: 'white',
-                padding: '1.25rem',
-                borderRadius: '16px',
-                overflow: 'hidden',
-                position: 'relative',
-                boxShadow: '0 8px 32px rgba(126, 58, 65, 0.3)'
+          {/* Year Selection Section */}
+          <div style={{ marginBottom: '3rem' }}>
+            <div style={{
+              backgroundColor: 'white',
+              borderRadius: '16px',
+              border: '1px solid #e9ecef',
+              padding: '2rem',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)'
+            }}>
+              <h5 style={{ 
+                color: '#2d2d2d', 
+                marginBottom: '1.5rem', 
+                display: 'flex', 
+                alignItems: 'center',
+                fontSize: '1.2rem',
+                fontWeight: '700'
               }}>
                 <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  marginBottom: '0.75rem'
+                  backgroundColor: 'rgba(126, 58, 65, 0.1)',
+                  borderRadius: '8px',
+                  padding: '8px',
+                  marginRight: '12px'
                 }}>
-                  <div style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                    borderRadius: '50%',
-                    padding: '8px',
-                    marginRight: '12px'
-                  }}>
-                    <Bell size={18} />
-                  </div>
-                  <span style={{ fontWeight: '700', fontSize: '1.1rem' }}>Latest Updates</span>
+                  <FileText size={20} style={{ color: 'var(--primary-red)' }} />
                 </div>
-                <p style={{ fontSize: '0.9rem', margin: '0', opacity: '0.95', lineHeight: '1.5' }}>
-                  Action by ED concluded • Q1 FY26 Results Released • New Solar Project Award • Strategic Partnership Signed
-                </p>
-              </div> */}
-
-              {/* Year Selection */}
-              <div style={{
-                backgroundColor: 'white',
-                borderRadius: '16px',
-                border: '1px solid #e9ecef',
-                padding: '1.75rem',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)'
+                Filter by Year
+              </h5>
+              
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+                gap: '1rem',
+                marginBottom: '2rem'
               }}>
-                <h5 style={{ 
-                  color: '#2d2d2d', 
-                  marginBottom: '1.5rem', 
-                  display: 'flex', 
-                  alignItems: 'center',
-                  fontSize: '1.2rem',
-                  fontWeight: '700'
-                }}>
-                  <div style={{
-                    backgroundColor: 'rgba(126, 58, 65, 0.1)',
-                    borderRadius: '8px',
-                    padding: '8px',
-                    marginRight: '12px'
-                  }}>
-                    <FileText size={20} style={{ color: 'var(--primary-red)' }} />
-                  </div>
-                  Filter by Year
-                </h5>
-                
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  {Object.keys(pressReleases).map((year) => (
-                    <div 
-                      key={year}
-                      style={{
-                        padding: '16px 20px',
-                        borderRadius: '12px',
-                        backgroundColor: selectedYear === year ? 'var(--primary-red)' : 'transparent',
-                        color: selectedYear === year ? 'white' : '#666',
-                        cursor: 'pointer',
-                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                        border: selectedYear === year ? 'none' : '2px solid #f1f3f4',
-                        fontWeight: selectedYear === year ? '700' : '600',
-                        fontSize: '0.95rem',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        boxShadow: selectedYear === year ? '0 4px 12px rgba(126, 58, 65, 0.3)' : 'none'
-                      }}
-                      onClick={() => setSelectedYear(year)}
-                      onMouseOver={(e) => {
-                        if (selectedYear !== year) {
-                          e.currentTarget.style.backgroundColor = 'rgba(126, 58, 65, 0.05)';
-                          e.currentTarget.style.borderColor = 'var(--primary-red)';
-                          e.currentTarget.style.color = 'var(--primary-red)';
-                          e.currentTarget.style.transform = 'translateX(4px)';
-                        }
-                      }}
-                      onMouseOut={(e) => {
-                        if (selectedYear !== year) {
-                          e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.borderColor = '#f1f3f4';
-                          e.currentTarget.style.color = '#666';
-                          e.currentTarget.style.transform = 'translateX(0)';
-                        }
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <span style={{ marginRight: '12px', fontSize: '1.1rem' }}>📁</span>
-                        <span>{year}</span>
-                      </div>
-                      <span style={{
-                        backgroundColor: selectedYear === year ? 'rgba(255, 255, 255, 0.2)' : 'rgba(126, 58, 65, 0.1)',
-                        color: selectedYear === year ? 'white' : 'var(--primary-red)',
-                        padding: '4px 10px',
-                        borderRadius: '20px',
-                        fontSize: '0.8rem',
-                        fontWeight: '600',
-                        minWidth: '45px',
-                        textAlign: 'center'
-                      }}>
-                        {pressReleases[year].length}
-                      </span>
+                {Object.keys(pressReleases).map((year) => (
+                  <div 
+                    key={year}
+                    style={{
+                      padding: '16px 20px',
+                      borderRadius: '12px',
+                      backgroundColor: selectedYear === year ? 'var(--primary-red)' : 'transparent',
+                      color: selectedYear === year ? 'white' : '#666',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      border: selectedYear === year ? 'none' : '2px solid #f1f3f4',
+                      fontWeight: selectedYear === year ? '700' : '600',
+                      fontSize: '0.95rem',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      boxShadow: selectedYear === year ? '0 4px 12px rgba(126, 58, 65, 0.3)' : 'none'
+                    }}
+                    onClick={() => setSelectedYear(year)}
+                    onMouseOver={(e) => {
+                      if (selectedYear !== year) {
+                        e.currentTarget.style.backgroundColor = 'rgba(126, 58, 65, 0.05)';
+                        e.currentTarget.style.borderColor = 'var(--primary-red)';
+                        e.currentTarget.style.color = 'var(--primary-red)';
+                        e.currentTarget.style.transform = 'translateX(4px)';
+                      }
+                    }}
+                    onMouseOut={(e) => {
+                      if (selectedYear !== year) {
+                        e.currentTarget.style.backgroundColor = 'transparent';
+                        e.currentTarget.style.borderColor = '#f1f3f4';
+                        e.currentTarget.style.color = '#666';
+                        e.currentTarget.style.transform = 'translateX(0)';
+                      }
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <span style={{ marginRight: '12px', fontSize: '1.1rem' }}>📁</span>
+                      <span>{year}</span>
                     </div>
-                  ))}
-                </div>
+                    <span style={{
+                      backgroundColor: selectedYear === year ? 'rgba(255, 255, 255, 0.2)' : 'rgba(126, 58, 65, 0.1)',
+                      color: selectedYear === year ? 'white' : 'var(--primary-red)',
+                      padding: '4px 10px',
+                      borderRadius: '20px',
+                      fontSize: '0.8rem',
+                      fontWeight: '600',
+                      minWidth: '45px',
+                      textAlign: 'center'
+                    }}>
+                      {pressReleases[year].length}
+                    </span>
+                  </div>
+                ))}
+              </div>
 
-                <div style={{
-                  marginTop: '1.5rem',
-                  padding: '16px',
-                  backgroundColor: '#f8f9fa',
-                  borderRadius: '12px',
-                  textAlign: 'center'
-                }}>
-                  <div style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--primary-red)', marginBottom: '4px' }}>
-                    {Object.values(pressReleases).flat().length}
-                  </div>
-                  <div style={{ fontSize: '0.85rem', color: '#666', fontWeight: '500' }}>
-                    Total Press Releases
-                  </div>
+              <div style={{
+                padding: '16px',
+                backgroundColor: '#f8f9fa',
+                borderRadius: '12px',
+                textAlign: 'center'
+              }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--primary-red)', marginBottom: '4px' }}>
+                  {Object.values(pressReleases).flat().length}
+                </div>
+                <div style={{ fontSize: '0.85rem', color: '#666', fontWeight: '500' }}>
+                  Total Press Releases
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Main Content */}
-            <div style={{ minHeight: '600px' }}>
+          {/* Press Releases Section */}
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '16px',
+            border: '1px solid #e9ecef',
+            overflow: 'hidden',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
+          }}>
+            <div style={{ 
+              padding: '2.5rem 2rem',
+              background: 'linear-gradient(135deg, var(--primary-red), #8b4049)',
+              color: 'white',
+              position: 'relative'
+            }}>
               <div style={{
-                backgroundColor: 'white',
-                borderRadius: '16px',
-                border: '1px solid #e9ecef',
-                overflow: 'hidden',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
-              }}>
-                <div style={{ 
-                  padding: '2.5rem 2rem',
-                  background: 'linear-gradient(135deg, var(--primary-red), #8b4049)',
-                  color: 'white',
-                  position: 'relative'
-                }}>
-                  <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    bottom: 0,
-                    left: 0,
-                    background: 'url("data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="rgba(255,255,255,0.05)" fill-rule="evenodd"%3E%3Cpath d="m0 40l40-40h-40z"/%3E%3C/g%3E%3C/svg%3E")',
-                    opacity: 0.1
-                  }}></div>
-                  <div style={{ position: 'relative', zIndex: 1 }}>
-                    <h2 style={{ fontSize: '2rem', fontWeight: '700', margin: '0 0 0.5rem 0', display: 'flex', alignItems: 'center' }}>
-                      <span style={{ marginRight: '12px' }}>📋</span>
-                      {selectedYear} Press Releases
-                    </h2>
-                    <p style={{ margin: '0', opacity: '0.9', fontSize: '1.1rem', fontWeight: '500' }}>
-                      {pressReleases[selectedYear]?.length || 0} official announcements and updates
-                    </p>
-                  </div>
-                </div>
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0,
+                background: 'url("data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="rgba(255,255,255,0.05)" fill-rule="evenodd"%3E%3Cpath d="m0 40l40-40h-40z"/%3E%3C/g%3E%3C/svg%3E")',
+                opacity: 0.1
+              }}></div>
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <h2 style={{ fontSize: '2rem', fontWeight: '700', margin: '0 0 0.5rem 0', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ marginRight: '12px' }}>📋</span>
+                  {selectedYear} Press Releases
+                </h2>
+                <p style={{ margin: '0', opacity: '0.9', fontSize: '1.1rem', fontWeight: '500' }}>
+                  {pressReleases[selectedYear]?.length || 0} official announcements and updates
+                </p>
+              </div>
+            </div>
 
-                <div style={{ padding: '0' }}>
-                  {pressReleases[selectedYear]?.length > 0 ? (
-                    pressReleases[selectedYear].map((release, index) => (
-                      <div 
-                        key={release.id}
-                        style={{
-                          padding: '2rem',
-                          borderBottom: index < pressReleases[selectedYear].length - 1 ? '1px solid #f1f3f4' : 'none',
-                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                          cursor: 'pointer',
-                          position: 'relative'
-                        }}
-                        onMouseOver={(e) => {
-                          e.currentTarget.style.backgroundColor = '#f8f9fa';
-                          e.currentTarget.style.transform = 'translateX(8px)';
-                          const button = e.currentTarget.querySelector('.download-btn');
-                          if (button) {
-                            button.style.backgroundColor = 'var(--primary-red-hover)';
-                            button.style.transform = 'translateY(-2px) scale(1.05)';
-                          }
-                        }}
-                        onMouseOut={(e) => {
-                          e.currentTarget.style.backgroundColor = 'white';
-                          e.currentTarget.style.transform = 'translateX(0)';
-                          const button = e.currentTarget.querySelector('.download-btn');
-                          if (button) {
-                            button.style.backgroundColor = 'var(--primary-red)';
-                            button.style.transform = 'translateY(0) scale(1)';
-                          }
-                        }}
-                      >
+            <div style={{ padding: '0' }}>
+              {pressReleases[selectedYear]?.length > 0 ? (
+                pressReleases[selectedYear].map((release, index) => (
+                  <div 
+                    key={release.id}
+                    style={{
+                      padding: '2rem',
+                      borderBottom: index < pressReleases[selectedYear].length - 1 ? '1px solid #f1f3f4' : 'none',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      cursor: 'pointer',
+                      position: 'relative'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.backgroundColor = '#f8f9fa';
+                      e.currentTarget.style.transform = 'translateX(8px)';
+                      const button = e.currentTarget.querySelector('.download-btn');
+                      if (button) {
+                        button.style.backgroundColor = 'var(--primary-red-hover)';
+                        button.style.transform = 'translateY(-2px) scale(1.05)';
+                      }
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.backgroundColor = 'white';
+                      e.currentTarget.style.transform = 'translateX(0)';
+                      const button = e.currentTarget.querySelector('.download-btn');
+                      if (button) {
+                        button.style.backgroundColor = 'var(--primary-red)';
+                        button.style.transform = 'translateY(0) scale(1)';
+                      }
+                    }}
+                  >
+                    <div style={{ 
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'flex-start',
+                      gap: '2rem'
+                    }}>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <h3 style={{ 
+                          color: '#2d2d2d', 
+                          marginBottom: '1rem', 
+                          fontSize: '1.2rem',
+                          fontWeight: '600',
+                          lineHeight: '1.4',
+                          wordWrap: 'break-word'
+                        }}>
+                          {release.title}
+                        </h3>
                         <div style={{ 
                           display: 'flex', 
-                          justifyContent: 'space-between', 
-                          alignItems: 'flex-start', 
-                          gap: '2rem',
-                          '@media (max-width: 768px)': {
-                            flexDirection: 'column',
-                            gap: '1.5rem'
-                          }
+                          alignItems: 'center', 
+                          gap: '1rem', 
+                          flexWrap: 'wrap',
+                          marginBottom: '0.5rem'
                         }}>
-                          <div style={{ flex: 1, minWidth: 0 }}>
-                            <h3 style={{ 
-                              color: '#2d2d2d', 
-                              marginBottom: '1rem', 
-                              fontSize: '1.2rem',
-                              fontWeight: '600',
-                              lineHeight: '1.4',
-                              wordWrap: 'break-word'
-                            }}>
-                              {release.title}
-                            </h3>
-                            <div style={{ 
-                              display: 'flex', 
-                              alignItems: 'center', 
-                              gap: '1rem', 
-                              flexWrap: 'wrap',
-                              marginBottom: '0.5rem'
-                            }}>
-                              <span 
-                                style={{ 
-                                  backgroundColor: getTypeColor(release.type),
-                                  color: 'white',
-                                  padding: '6px 16px',
-                                  borderRadius: '25px',
-                                  fontSize: '0.8rem',
-                                  fontWeight: '600',
-                                  textTransform: 'uppercase',
-                                  letterSpacing: '0.5px'
-                                }}
-                              >
-                                {release.type}
-                              </span>
-                              <div style={{ 
-                                display: 'flex', 
-                                alignItems: 'center', 
-                                color: '#666', 
-                                fontSize: '0.95rem',
-                                fontWeight: '500'
-                              }}>
-                                <Calendar size={16} style={{ marginRight: '8px' }} />
-                                {release.date}
-                              </div>
-                            </div>
-                          </div>
-                          <button 
-                            className="download-btn"
-                            style={{
-                              backgroundColor: 'var(--primary-red)',
+                          <span 
+                            style={{ 
+                              backgroundColor: getTypeColor(release.type),
                               color: 'white',
-                              border: 'none',
-                              padding: '12px 24px',
-                              borderRadius: '12px',
-                              cursor: 'pointer',
-                              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '8px',
-                              fontSize: '0.9rem',
+                              padding: '6px 16px',
+                              borderRadius: '25px',
+                              fontSize: '0.8rem',
                               fontWeight: '600',
-                              boxShadow: '0 4px 12px rgba(126, 58, 65, 0.3)',
-                              whiteSpace: 'nowrap'
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.5px'
                             }}
                           >
-                            <Download size={18} />
-                            Download PDF
-                          </button>
+                            {release.type}
+                          </span>
+                          <div style={{ 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            color: '#666', 
+                            fontSize: '0.95rem',
+                            fontWeight: '500'
+                          }}>
+                            <Calendar size={16} style={{ marginRight: '8px' }} />
+                            {release.date}
+                          </div>
                         </div>
                       </div>
-                    ))
-                  ) : (
-                    <div style={{ 
-                      textAlign: 'center', 
-                      padding: '5rem 2rem', 
-                      color: '#666'
-                    }}>
-                      <div style={{
-                        backgroundColor: '#f8f9fa',
-                        borderRadius: '50%',
-                        width: '100px',
-                        height: '100px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto 1.5rem auto'
-                      }}>
-                        <FileText size={48} style={{ color: '#ccc' }} />
-                      </div>
-                      <h3 style={{ color: '#999', marginBottom: '0.75rem', fontSize: '1.3rem', fontWeight: '600' }}>
-                        No releases available
-                      </h3>
-                      <p style={{ color: '#ccc', margin: '0', fontSize: '1rem' }}>
-                        No press releases found for {selectedYear}
-                      </p>
+                      <button 
+                        className="download-btn"
+                        style={{
+                          backgroundColor: 'var(--primary-red)',
+                          color: 'white',
+                          border: 'none',
+                          padding: '12px 24px',
+                          borderRadius: '12px',
+                          cursor: 'pointer',
+                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          fontSize: '0.9rem',
+                          fontWeight: '600',
+                          boxShadow: '0 4px 12px rgba(126, 58, 65, 0.3)',
+                          whiteSpace: 'nowrap',
+                          flexShrink: 0
+                        }}
+                      >
+                        <Download size={18} />
+                        Download PDF
+                      </button>
                     </div>
-                  )}
+                  </div>
+                ))
+              ) : (
+                <div style={{ 
+                  textAlign: 'center', 
+                  padding: '5rem 2rem', 
+                  color: '#666'
+                }}>
+                  <div style={{
+                    backgroundColor: '#f8f9fa',
+                    borderRadius: '50%',
+                    width: '100px',
+                    height: '100px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1.5rem auto'
+                  }}>
+                    <FileText size={48} style={{ color: '#ccc' }} />
+                  </div>
+                  <h3 style={{ color: '#999', marginBottom: '0.75rem', fontSize: '1.3rem', fontWeight: '600' }}>
+                    No releases available
+                  </h3>
+                  <p style={{ color: '#ccc', margin: '0', fontSize: '1rem' }}>
+                    No press releases found for {selectedYear}
+                  </p>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -572,30 +500,22 @@ const PressRelease = () => {
         {/* Mobile Responsive Styles */}
         <style jsx>{`
           @media (max-width: 768px) {
-            .main-content-grid {
+            .year-selection-grid {
               grid-template-columns: 1fr !important;
-              gap: 1.5rem !important;
             }
             
-            .release-item-content {
+            .release-item-flex {
               flex-direction: column !important;
+              align-items: flex-start !important;
               gap: 1.5rem !important;
             }
             
             .download-btn {
               align-self: flex-start !important;
             }
-            
-            .year-selection {
-              order: -1;
-            }
           }
           
           @media (max-width: 480px) {
-            .notification-banner {
-              padding: 1rem !important;
-            }
-            
             .year-selection-card {
               padding: 1.25rem !important;
             }

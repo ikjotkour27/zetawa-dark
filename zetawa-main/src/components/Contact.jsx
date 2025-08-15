@@ -55,7 +55,7 @@ const Contact = () => {
       icon: Phone,
       title: 'Phone Numbers',
       details: [
-        { label: 'Main Office', value: '+1 (555) 123-4567' },
+        { label: 'Main Office', value: '+91 70042 65718' },
         { label: 'Customer Support', value: '+1 (555) 123-4568' },
         { label: 'Sales Inquiries', value: '+1 (555) 123-4569' }
       ]
@@ -64,7 +64,7 @@ const Contact = () => {
       icon: Mail,
       title: 'Email Addresses',
       details: [
-        { label: 'General Inquiries', value: 'info@zetawadark.com' },
+        { label: 'General Inquiries', value: 'tabrez.zeta@gmail.com' },
         { label: 'Support', value: 'support@zetawadark.com' },
         { label: 'Sales', value: 'sales@zetawadark.com' },
         { label: 'Careers', value: 'careers@zetawadark.com' }
@@ -74,9 +74,9 @@ const Contact = () => {
       icon: MapPin,
       title: 'Company Address',
       details: [
-        { label: 'Headquarters', value: '123 Business District, Suite 456' },
-        { label: 'City', value: 'New York, NY 10001' },
-        { label: 'Country', value: 'United States' }
+        { label: 'Headquarters', value: ' Dhaka Champaran district' },
+        { label: 'City', value: 'Bihar' },
+        { label: 'Country', value: 'India' }
       ]
     },
     {
@@ -91,7 +91,7 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { name: 'LinkedIn', url: '#', color: '#0077B5' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/tabrez-alam-59b6b61b3/', color: '#0077B5' },
     { name: 'Twitter', url: '#', color: '#1DA1F2' },
     { name: 'Facebook', url: '#', color: '#1877F2' },
     { name: 'Instagram', url: '#', color: '#E4405F' }
@@ -101,7 +101,7 @@ const Contact = () => {
     <div style={{ 
       fontFamily: 'system-ui, -apple-system, sans-serif',
       backgroundColor: '#304356ff',
-      minHeight: '100vh'
+      minHeight: '100vh',
     }}>
       
       {/* Header */}
@@ -112,7 +112,7 @@ const Contact = () => {
         textAlign: 'center'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <Link 
+          {/* <Link 
             to="/" 
             style={{
               backgroundColor: '#884a51ff',
@@ -133,7 +133,7 @@ const Contact = () => {
             <ArrowLeft size={20} />
             Back to Home
           </Link>
-          
+           */}
           <h1 style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '1rem' }}>
             Contact Us
           </h1>
