@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronRight, MapPin, Clock, Users, Award, ArrowRight, Mail, Phone } from 'lucide-react';
 import Nav from './Nav';
-
+import img1 from '../assets/manjeet.jpg';
+import img2 from '../assets/someone.jpg'
 
 const Careers = () => {
   const [expandedJob, setExpandedJob] = useState(null);
@@ -12,19 +13,19 @@ const Careers = () => {
       id: 1,
       title: "Senior Software Engineer",
       department: "Technology",
-      location: "Mumbai, India",
-      type: "Full-time",
-      experience: "5-8 years",
+      location: "Remote",
+     type: "Full-time / Intern",
+      experience: "Freshers / 0-2 years",
       description: "Lead development of enterprise applications using modern technologies. Work with cross-functional teams to deliver high-quality solutions.",
-      requirements: ["Bachelor's in Computer Science", "5+ years experience", "Proficiency in React, Node.js", "Experience with cloud platforms"]
+      requirements: ["Bachelor's in Computer Science", "Fresher", "Proficiency in React, Node.js", "Experience with cloud platforms"]
     },
     {
       id: 2,
       title: "Data Scientist",
       department: "Analytics",
-      location: "Bangalore, India",
-      type: "Full-time",
-      experience: "3-5 years",
+      location: "Remote",
+    type: "Full-time / Intern",
+      experience: "Freshers / 0-2 years",
       description: "Analyze complex datasets to drive business insights and develop machine learning models for predictive analytics.",
       requirements: ["Master's in Data Science/Statistics", "Python, R expertise", "ML/AI experience", "Strong analytical skills"]
     },
@@ -32,9 +33,9 @@ const Careers = () => {
       id: 3,
       title: "UX Designer",
       department: "Design",
-      location: "Pune, India",
-      type: "Full-time",
-      experience: "2-4 years",
+      location: "Remote",
+     type: "Full-time / Intern",
+      experience: "Freshers / 0-2 years",
       description: "Design intuitive user experiences for digital products. Collaborate with product teams to create user-centered designs.",
       requirements: ["Bachelor's in Design", "Figma, Adobe Creative Suite", "User research experience", "Portfolio required"]
     },
@@ -42,9 +43,9 @@ const Careers = () => {
       id: 4,
       title: "Business Analyst",
       department: "Strategy",
-      location: "Delhi, India",
-      type: "Full-time",
-      experience: "3-6 years",
+      location: "Remote",
+      type: "Full-time / Intern",
+      experience: "Freshers / 0-2 years",
       description: "Analyze business processes and requirements to drive strategic initiatives and operational improvements.",
       requirements: ["MBA or equivalent", "Business analysis experience", "Strong communication skills", "Process improvement knowledge"]
     }
@@ -73,25 +74,18 @@ const Careers = () => {
 
   const testimonials = [
     {
-      name: "Priya Sharma",
-      role: "Senior Developer",
+      name: "Manjeet Kumaar",
+      role: "Robotics Engineer",
       department: "Technology",
-      quote: "The learning opportunities here are incredible. I've grown both technically and professionally, working on cutting-edge projects with brilliant colleagues.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
+      quote: "Zetawa Dark Private Limited, a company making a difference in the software industry. Founded by visionary Tabrej Zeta, it provides real-world project experience to new college students, nurturing young talent and empowering them to build innovative solutions. With a focus on innovation, teamwork, and mentorship, Zetawa Dark is shaping the next generation of tech leaders. I've seen its impact firsthand and can confidently say it's one of the best companies out there. Kudos to Tabrej Zeta and the team for creating an incredible opportunity for students and professionals alike!",
+      image: img1
     },
     {
       name: "Rahul Mehta",
       role: "Data Scientist",
       department: "Analytics", 
-      quote: "The collaborative culture and focus on innovation makes this an ideal place for anyone passionate about solving complex problems with data.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      name: "Anita Desai",
-      role: "Project Manager",
-      department: "Operations",
-      quote: "The company truly invests in its people. The mentorship programs and career development opportunities have been transformational for my growth.",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+      quote: "The unique vision and collective effort makes  this company a great place to work and very good for the personal and professional growth of an individual.",
+      image: img2
     }
   ];
 
@@ -631,7 +625,7 @@ const Careers = () => {
                 onMouseOut={(e) => e.target.style.backgroundColor = 'var(--primary-red)'}
               >
                 <Mail size={20} />
-                careers@company.com
+                hr@dark.zetawa.com
               </button>
               <button
                 style={{
@@ -658,7 +652,7 @@ const Careers = () => {
                 }}
               >
                 <Phone size={20} />
-                +91-XXXX-XXXX
+                +91 70042 65718
               </button>
             </div>
           </div>

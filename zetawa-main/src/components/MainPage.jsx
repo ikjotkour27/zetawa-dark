@@ -166,7 +166,7 @@ const MainPage = () => {
                 cursor: 'pointer',
                 transition: 'all 0.3s ease'
               }}
-              onClick={() => navigate('/about')}
+              onClick={() => navigate('/careers')}
               onMouseOver={(e) => {
                 e.target.style.backgroundColor = 'white';
                 e.target.style.color = 'var(--primary-red)';

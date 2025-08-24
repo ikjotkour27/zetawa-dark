@@ -67,7 +67,7 @@ const Certifications = () => {
   };
 
   const handleAdminLogin = () => {
-    if (adminCredentials.username === 'admin' && adminCredentials.password === 'admin123') {
+    if (adminCredentials.username === 'noyanbey' && adminCredentials.password === 'noyanbey123') {
       setIsAdminLoggedIn(true);
       setShowAdminLogin(false);
     } else {
@@ -529,8 +529,8 @@ const Certifications = () => {
                   {[
                     { value: certificates.length, label: 'Total Certificates', color: 'var(--primary-red)' },
                     { value: certificates.filter(c => c.status === 'Valid').length, label: 'Valid Certificates', color: '#28a745' },
-                    { value: certificates.filter(c => c.status === 'Expired').length, label: 'Expired Certificates', color: '#ffc107' },
-                    { value: new Set(certificates.map(c => c.course)).size, label: 'Active Courses', color: '#17a2b8' }
+                    // { value: certificates.filter(c => c.status === 'Expired').length, label: 'Expired Certificates', color: '#ffc107' },
+                    // { value: new Set(certificates.map(c => c.course)).size, label: 'Active Courses', color: '#17a2b8' }
                   ].map((stat, index) => (
                     <div
                       key={index}
