@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Phone, Mail, MapPin, Clock, Send, User, MessageSquare, Award, Shield, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Phone, Mail, MapPin, Clock, Send, User, MessageSquare, Award, Shield, CheckCircle, Download, ExternalLink } from 'lucide-react';
+import Nav from './Nav';
 
 const Certifications = () => {
   const [searchCertNumber, setSearchCertNumber] = useState('');
@@ -8,7 +9,7 @@ const Certifications = () => {
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
   const [showAdminLogin, setShowAdminLogin] = useState(false);
 
-  // Sample certificate data
+  // Sample certificate data with Google Drive links
   const certificates = [
     {
       id: 1,
@@ -20,43 +21,21 @@ const Certifications = () => {
       grade: 'A',
       status: 'Valid',
       mentor: 'Sarah Johnson',
-      duration: '3 months'
+      duration: '3 months',
+      driveLink: 'https://drive.google.com/file/d/1ABcDEfGhIjKlMnOpQrStUvWxYz123456/view?usp=sharing'
     },
     {
       id: 2,
       certificateNumber: 'ZD2025002',
       internName: 'Jane Smith',
-      course: 'Data Science & Analytics',
-      issueDate: '2025-01-18',
-      completionDate: '2025-01-12',
+      course: 'Digital Marketing',
+      issueDate: '2025-01-20',
+      completionDate: '2025-01-18',
       grade: 'A+',
       status: 'Valid',
-      mentor: 'Michael Chen',
-      duration: '4 months'
-    },
-    {
-      id: 3,
-      certificateNumber: 'ZD2025003',
-      internName: 'Alex Rodriguez',
-      course: 'UI/UX Design',
-      issueDate: '2025-01-20',
-      completionDate: '2025-01-15',
-      grade: 'B+',
-      status: 'Valid',
-      mentor: 'Emily Davis',
-      duration: '3 months'
-    },
-    {
-      id: 4,
-      certificateNumber: 'ZD2024050',
-      internName: 'Sam Wilson',
-      course: 'Mobile App Development',
-      issueDate: '2024-12-15',
-      completionDate: '2024-12-10',
-      grade: 'A',
-      status: 'Expired',
-      mentor: 'David Lee',
-      duration: '3 months'
+      mentor: 'Michael Brown',
+      duration: '2 months',
+      driveLink: 'https://drive.google.com/file/d/1XyZaBcDeFgHiJkLmNoPqRsTuVwX789012/view?usp=sharing'
     }
   ];
 
@@ -101,6 +80,16 @@ const Certifications = () => {
     setValidationResult(null);
   };
 
+  const handleDownloadCertificate = (driveLink) => {
+    // Convert view link to download link
+    const downloadLink = driveLink.replace('/view?usp=sharing', '/export?format=pdf');
+    window.open(downloadLink, '_blank');
+  };
+
+  const handleViewCertificate = (driveLink) => {
+    window.open(driveLink, '_blank');
+  };
+
   const CertificateImage = ({ certificate }) => (
     <div style={{
       background: 'linear-gradient(135deg, #ffffff, #f8f9fa)',
@@ -113,6 +102,7 @@ const Certifications = () => {
       margin: '0 auto',
       boxShadow: '0 15px 35px rgba(0,0,0,0.3)'
     }}>
+      
       <div style={{ borderBottom: '3px solid var(--primary-red)', paddingBottom: '20px', marginBottom: '30px' }}>
         <h2 style={{ color: 'var(--primary-red)', fontWeight: 'bold', margin: '0' }}>ZETAWA DARK</h2>
         <p style={{ color: '#666', fontSize: '14px', margin: '15px 0 0 0' }}>Certificate of Completion</p>
@@ -154,7 +144,7 @@ const Certifications = () => {
       backgroundColor: '#304356ff',
       minHeight: '100vh'
     }}>
-      
+       <Nav/>
       {/* Header */}
       <header style={{ 
         backgroundColor: 'var(--primary-red)',
@@ -162,42 +152,15 @@ const Certifications = () => {
         padding: '4rem 0',
         position: 'relative'
       }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          {/* <button 
-            onClick={() => window.history.back()}
-            style={{
-              position: 'absolute',
-              top: '2rem',
-              left: '2rem',
-              backgroundColor: 'rgba(169, 104, 104, 0.2)',
-              color: 'white',
-              border: 'none',
-              borderRadius: '8px',
-              padding: '0.75rem 1.25rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              textDecoration: 'none',
-              transition: 'background-color 0.2s',
-              fontSize: '1rem',
-              fontWeight: '500',
-              cursor: 'pointer'
-            }}
-            onMouseOver={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.3)'}
-            onMouseOut={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.2)'}
-          >
-            <ArrowLeft size={20} />
-            Back to Home
-          </button> */}
-
-          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-            <h1 className="hero-title" style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '1rem' }}>
-              ZETAWA DARK
-            </h1>
-            <p style={{ fontSize: '1.5rem', opacity: '0.9', marginBottom: '0.5rem' }}>
+        
+        <div style={{ maxWidth: 'auto', margin: '0 auto', padding: '0 2rem' }}>
+        
+          <div style={{ textAlign: 'center', marginTop: '-2rem' }}>
+            
+            <h1 style={{ fontSize: '2.5rem', opacity: '0.9', marginBottom: '0.5rem' }}>
               Certificate Verification Portal
-            </p>
-            <p style={{ fontSize: '1.1rem', opacity: '0.8', maxWidth: '600px', margin: '0 auto' }}>
+            </h1>
+            <p style={{ fontSize: '0.8rem', opacity: '0.8', maxWidth: '600px', margin: '0 auto' }}>
               Validate your internship completion certificate with our secure verification system
             </p>
           </div>
@@ -238,7 +201,7 @@ const Certifications = () => {
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                   <input
                     type="text"
-                    placeholder="Enter certificate number (e.g., ZD2025001)"
+                    placeholder="Enter certificate number (e.g., ZD2025001, ZD2025002)"
                     value={searchCertNumber}
                     onChange={(e) => setSearchCertNumber(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleValidation()}
@@ -286,37 +249,93 @@ const Certifications = () => {
                   borderRadius: '10px',
                   border: `2px solid ${validationResult.type === 'success' ? '#28a745' : '#dc3545'}`,
                   backgroundColor: validationResult.type === 'success' ? 'rgba(40, 167, 69, 0.1)' : 'rgba(220, 53, 69, 0.1)',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
+                  marginBottom: validationResult.type === 'success' ? '2rem' : '0'
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    {validationResult.type === 'success' ? 
-                      <CheckCircle size={24} style={{ color: '#28a745' }} /> :
-                      <MessageSquare size={24} style={{ color: '#dc3545' }} />
-                    }
-                    <span style={{ 
-                      color: validationResult.type === 'success' ? '#28a745' : '#dc3545',
-                      fontWeight: '600',
-                      fontSize: '1.1rem'
-                    }}>
-                      {validationResult.message}
-                    </span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: validationResult.type === 'success' ? '1.5rem' : '0' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                      {validationResult.type === 'success' ? 
+                        <CheckCircle size={24} style={{ color: '#28a745' }} /> :
+                        <MessageSquare size={24} style={{ color: '#dc3545' }} />
+                      }
+                      <span style={{ 
+                        color: validationResult.type === 'success' ? '#28a745' : '#dc3545',
+                        fontWeight: '600',
+                        fontSize: '1.1rem'
+                      }}>
+                        {validationResult.message}
+                      </span>
+                    </div>
+                    <button 
+                      onClick={resetSearch}
+                      style={{ 
+                        background: 'transparent', 
+                        border: 'none', 
+                        color: 'inherit',
+                        fontSize: '1.5rem',
+                        cursor: 'pointer',
+                        padding: '0.25rem',
+                        borderRadius: '4px'
+                      }}
+                    >
+                      ×
+                    </button>
                   </div>
-                  <button 
-                    onClick={resetSearch}
-                    style={{ 
-                      background: 'transparent', 
-                      border: 'none', 
-                      color: 'inherit',
-                      fontSize: '1.5rem',
-                      cursor: 'pointer',
-                      padding: '0.25rem',
-                      borderRadius: '4px'
-                    }}
-                  >
-                    ×
-                  </button>
+
+                  {/* Download Buttons - Only show for valid certificates */}
+                  {validationResult.type === 'success' && validationResult.data && (
+                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                      <button
+                        onClick={() => handleViewCertificate(validationResult.data.driveLink)}
+                        style={{
+                          backgroundColor: '#28a745',
+                          color: 'white',
+                          border: 'none',
+                          padding: '1rem 2rem',
+                          borderRadius: '10px',
+                          fontSize: '1rem',
+                          fontWeight: '600',
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.5rem',
+                          flex: '1',
+                          minWidth: '200px',
+                          justifyContent: 'center'
+                        }}
+                        onMouseOver={(e) => e.target.style.backgroundColor = '#218838'}
+                        onMouseOut={(e) => e.target.style.backgroundColor = '#28a745'}
+                      >
+                        <ExternalLink size={20} />
+                        View Certificate
+                      </button>
+                      <button
+                        onClick={() => handleDownloadCertificate(validationResult.data.driveLink)}
+                        style={{
+                          backgroundColor: '#007bff',
+                          color: 'white',
+                          border: 'none',
+                          padding: '1rem 2rem',
+                          borderRadius: '10px',
+                          fontSize: '1rem',
+                          fontWeight: '600',
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.5rem',
+                          flex: '1',
+                          minWidth: '200px',
+                          justifyContent: 'center'
+                        }}
+                        onMouseOver={(e) => e.target.style.backgroundColor = '#0056b3'}
+                        onMouseOut={(e) => e.target.style.backgroundColor = '#007bff'}
+                      >
+                        <Download size={20} />
+                        Download PDF
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -490,7 +509,8 @@ const Certifications = () => {
                   </div>
                   <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
                     <small style={{ color: '#888', fontSize: '0.9rem' }}>
-                      Demo credentials: admin / admin123, Try: ZD2025001
+                      Demo credentials: admin / admin123<br />
+                      Try certificate numbers: ZD2025001, ZD2025002
                     </small>
                   </div>
                 </div>

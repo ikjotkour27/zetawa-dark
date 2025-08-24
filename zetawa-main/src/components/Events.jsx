@@ -151,13 +151,11 @@ const Events = () => {
       return;
     }
 
-    // Simulate registration process
     setRegistrationStatus({
       type: 'success',
       message: 'Registration successful! Check your email for confirmation.'
     });
 
-    // Reset form
     setRegistrationData({ name: '', email: '', phone: '', eventId: null });
     setSelectedEvent(null);
   };
@@ -189,21 +187,30 @@ const Events = () => {
   };
 
   return (
-    <>
+    <div style={{ 
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      backgroundColor: '#304356ff',
+      minHeight: '100vh'
+    }}>
       <style>{`
         :root {
           --primary-red: #7e3a41ff;
           --primary-red-hover: #884a51ff;
-          --dark-bg: #b9adadff;
+          --dark-bg: #304356ff;
           --dark-card: #2d2d2d;
           --dark-border: #404040;
         }
 
-        body {
-          background-color: var(--dark-bg);
-          color: white;
+        * {
           margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 1rem;
         }
 
         .back-button {
@@ -211,35 +218,50 @@ const Events = () => {
           color: white;
           border: none;
           border-radius: 8px;
-          padding: 0.5rem 1rem;
-          display: flex;
+          padding: 0.75rem 1.5rem;
+          display: inline-flex;
           align-items: center;
           text-decoration: none;
-          transition: background-color 0.2s;
+          transition: all 0.3s ease;
           cursor: pointer;
+          font-weight: 600;
+          margin-bottom: 1rem;
         }
         
         .back-button:hover {
           background-color: var(--primary-red-hover);
-          color: white;
-          text-decoration: none;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
         .hero-section {
-          background: linear-gradient(135deg, rgba(108, 101, 102, 0.15), rgba(185, 173, 173, 0.9));
+          background-color: var(--primary-red);
+          color: white;
           text-align: center;
-          margin-bottom: 30px;
-          padding: 40px 0;
+          padding: 3rem 0;
+          position: relative;
+          overflow: hidden;
         }
         
         .hero-title {
-          font-size: 3rem;
-          font-weight: bold;
-          margin-bottom: 20px;
-          background: linear-gradient(45deg, #000, #c77f86ff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          font-size: 2.8rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: #ffebee;
+        }
+
+        .hero-subtitle {
+          font-size: 1.3rem;
+          margin-bottom: 0.5rem;
+          opacity: 0.9;
+          color: white;
+        }
+
+        .hero-description {
+          font-size: 1rem;
+          opacity: 0.8;
+          color: #f5f5f5;
+          margin: 0;
         }
 
         .notification-banner {
@@ -248,7 +270,6 @@ const Events = () => {
           padding: 10px 0;
           overflow: hidden;
           position: relative;
-          margin-bottom: 20px;
         }
 
         .notification-text {
@@ -263,27 +284,29 @@ const Events = () => {
         }
 
         .card-custom {
-          background-color: var(--dark-card);
-          border: 1px solid var(--dark-border);
+          background-color: white;
+          border: 1px solid #e9ecef;
           border-radius: 15px;
           transition: all 0.3s ease;
-          box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+          box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+          margin-bottom: 2rem;
         }
 
         .card-custom:hover {
           transform: translateY(-5px);
-          box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+          box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
         .tab-button {
           background-color: transparent;
-          color: #adb5bd;
-          border: 2px solid var(--dark-border);
+          color: #6c757d;
+          border: 2px solid #e9ecef;
           padding: 12px 24px;
           border-radius: 10px;
           margin: 0 5px;
           transition: all 0.3s;
           cursor: pointer;
+          font-weight: 500;
         }
 
         .tab-button.active {
@@ -295,21 +318,23 @@ const Events = () => {
         .tab-button:hover {
           border-color: var(--primary-red);
           color: var(--primary-red);
+          transform: translateY(-2px);
         }
 
         .event-card {
-          background-color: var(--dark-card);
-          border: 1px solid var(--dark-border);
+          background-color: white;
+          border: 1px solid #e9ecef;
           border-radius: 15px;
           padding: 25px;
           margin-bottom: 20px;
           transition: all 0.3s ease;
           cursor: pointer;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         .event-card:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+          transform: translateY(-5px);
+          box-shadow: 0 15px 35px rgba(0,0,0,0.15);
           border-color: var(--primary-red);
         }
 
@@ -323,37 +348,48 @@ const Events = () => {
           border: none;
           color: white;
           cursor: pointer;
+          font-size: 1rem;
         }
         
         .btn-primary-custom:hover {
           background-color: var(--primary-red-hover);
           border-color: var(--primary-red-hover);
           transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary-custom:disabled {
+          background-color: #6c757d;
+          border-color: #6c757d;
+          cursor: not-allowed;
+          transform: none;
+          box-shadow: none;
         }
 
         .form-control-custom {
-          background-color: #404040;
-          border: 2px solid var(--dark-border);
-          color: white;
+          background-color: white;
+          border: 2px solid #e9ecef;
+          color: #2d2d2d;
           padding: 12px;
           border-radius: 8px;
           transition: all 0.3s;
           width: 100%;
+          font-size: 1rem;
         }
         
         .form-control-custom:focus {
-          background-color: #505050;
+          background-color: #f8f9fa;
           border-color: var(--primary-red);
-          color: white;
-          box-shadow: 0 0 0 0.2rem rgba(184, 61, 73, 0.25);
+          color: #2d2d2d;
+          box-shadow: 0 0 0 0.2rem rgba(126, 58, 65, 0.25);
           outline: none;
         }
 
         .type-badge {
-          padding: 6px 12px;
+          padding: 8px 12px;
           border-radius: 15px;
           font-size: 0.75rem;
-          font-weight: 500;
+          font-weight: 600;
           color: white;
           display: inline-flex;
           align-items: center;
@@ -361,7 +397,7 @@ const Events = () => {
         }
 
         .progress-bar-custom {
-          background-color: #404040;
+          background-color: #e9ecef;
           border-radius: 10px;
           height: 8px;
           overflow: hidden;
@@ -376,554 +412,747 @@ const Events = () => {
 
         .calendar-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 15px;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 20px;
           margin-top: 20px;
         }
 
         .calendar-item {
-          background-color: var(--dark-card);
-          border: 1px solid var(--dark-border);
-          border-radius: 10px;
-          padding: 15px;
+          background-color: white;
+          border: 1px solid #e9ecef;
+          border-radius: 12px;
+          padding: 20px;
           transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         .calendar-item:hover {
           border-color: var(--primary-red);
-          transform: translateY(-2px);
+          transform: translateY(-3px);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
+        .row {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0 -0.5rem;
+        }
+
+        .col-lg-6, .col-md-6, .col-12 {
+          padding: 0 0.5rem;
+        }
+
+        .col-lg-6 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+
+        .col-md-6 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+
+        .col-12 {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+
+        .col-lg-8 {
+          flex: 0 0 66.666667%;
+          max-width: 66.666667%;
+        }
+
+        .col-md-4 {
+          flex: 0 0 33.333333%;
+          max-width: 33.333333%;
+        }
+
+        .mb-3 { margin-bottom: 1rem; }
+        .mb-4 { margin-bottom: 1.5rem; }
+        .mb-5 { margin-bottom: 3rem; }
+        .pb-5 { padding-bottom: 3rem; }
+        .text-center { text-align: center; }
+        .w-100 { width: 100%; }
+
+        .d-flex {
+          display: flex;
+        }
+
+        .justify-content-between {
+          justify-content: space-between;
+        }
+
+        .justify-content-center {
+          justify-content: center;
+        }
+
+        .align-items-center {
+          align-items: center;
+        }
+
+        .align-items-start {
+          align-items: flex-start;
+        }
+
+        .flex-wrap {
+          flex-wrap: wrap;
+        }
+
+        .gap-2 {
+          gap: 0.5rem;
+        }
+
+        .gap-3 {
+          gap: 1rem;
+        }
+
+        .tag-badge {
+          background: rgba(126, 58, 65, 0.1);
+          color: var(--primary-red);
+          padding: 4px 10px;
+          border-radius: 12px;
+          font-size: 0.75rem;
+          font-weight: 500;
+        }
+
+        .alert-success {
+          background: rgba(40, 167, 69, 0.1);
+          border: 2px solid #28a745;
+          color: #28a745;
+          border-radius: 10px;
+          padding: 15px;
+          margin-bottom: 20px;
+        }
+
+        .alert-danger {
+          background: rgba(220, 53, 69, 0.1);
+          border: 2px solid #dc3545;
+          color: #dc3545;
+          border-radius: 10px;
+          padding: 15px;
+          margin-bottom: 20px;
+        }
+
+        .stats-section {
+          background-color: white;
+          padding: 2rem 0;
+          margin: 2rem 0;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+        }
+
+        .stat-card {
+          background-color: #f8f9fa;
+          border: 1px solid #e9ecef;
+          border-radius: 15px;
+          padding: 2rem;
+          text-align: center;
+          transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .cta-section {
+          background: linear-gradient(135deg, var(--primary-red), #ff6b7d);
+          color: white;
+          padding: 3rem;
+          border-radius: 20px;
+          text-align: center;
+          margin: 2rem 0;
+        }
+
+        .cta-button {
+          background-color: white;
+          color: var(--primary-red);
+          border: none;
+          padding: 1rem 2rem;
+          border-radius: 8px;
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          margin: 0 0.5rem;
+        }
+
+        .cta-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .cta-button-outline {
+          background-color: transparent;
+          color: white;
+          border: 2px solid white;
+          padding: 1rem 2rem;
+          border-radius: 8px;
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          margin: 0 0.5rem;
+        }
+
+        .cta-button-outline:hover {
+          background-color: white;
+          color: var(--primary-red);
+        }
+
+        /* Responsive Styles */
         @media (max-width: 768px) {
           .hero-title {
             font-size: 2rem;
           }
+          
+          .hero-subtitle {
+            font-size: 1.1rem;
+          }
+          
           .tab-button {
             padding: 8px 16px;
             margin: 5px 2px;
+            font-size: 0.9rem;
+          }
+          
+          .col-lg-6, .col-md-6 {
+            flex: 0 0 100%;
+            max-width: 100%;
+          }
+          
+          .col-lg-8 {
+            flex: 0 0 100%;
+            max-width: 100%;
+          }
+          
+          .col-md-4 {
+            flex: 0 0 100%;
+            max-width: 100%;
+          }
+          
+          .calendar-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .event-card {
+            padding: 20px;
+          }
+          
+          .container {
+            padding: 0 1rem;
+          }
+          
+          .stats-grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .cta-button, .cta-button-outline {
+            display: block;
+            width: 100%;
+            margin: 0.5rem 0;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-title {
+            font-size: 1.8rem;
+          }
+          
+          .tab-button {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+          }
+          
+          .event-card {
+            padding: 15px;
+          }
+          
+          .card-custom {
+            padding: 20px !important;
           }
         }
       `}</style>
 
-      <div style={{ minHeight: '100vh' }}>
-        {/* Moving Notification Banner */}
-        <div className="notification-banner">
-          <div className="notification-text">
-            🎉 Upcoming: Full Stack Development Workshop - Aug 15 • Data Science Conference - Aug 22 • 
-            UI/UX Design Webinar - Aug 5 • Register now for limited seats! Early bird discounts available
-          </div>
+      {/* Moving Notification Banner */}
+      <div className="notification-banner">
+        <div className="notification-text">
+          🎉 Upcoming: Full Stack Development Workshop - Aug 15 • Data Science Conference - Aug 22 • 
+          UI/UX Design Webinar - Aug 5 • Register now for limited seats! Early bird discounts available
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <div className="hero-section">
+        <div className="container">
+          <button className="back-button">
+            <ArrowLeft size={20} style={{ marginRight: '8px' }} />
+            Back to Home
+          </button>
+          <h1 className="hero-title">ZETAWA DARK</h1>
+          <p className="hero-subtitle">
+            Events & Learning Hub
+          </p>
+          <p className="hero-description">
+            Conferences, workshops, webinars, and networking opportunities
+          </p>
+        </div>
+      </div>
+
+      <div className="container pb-5">
+        {/* Navigation Tabs */}
+        <div className="text-center mb-4">
+          <button 
+            className={`tab-button ${activeTab === 'upcoming' ? 'active' : ''}`}
+            onClick={() => setActiveTab('upcoming')}
+          >
+            <Calendar size={16} style={{ marginRight: '8px' }} />
+            Upcoming Events
+          </button>
+          <button 
+            className={`tab-button ${activeTab === 'past' ? 'active' : ''}`}
+            onClick={() => setActiveTab('past')}
+          >
+            <Clock size={16} style={{ marginRight: '8px' }} />
+            Past Events
+          </button>
+          <button 
+            className={`tab-button ${activeTab === 'calendar' ? 'active' : ''}`}
+            onClick={() => setActiveTab('calendar')}
+          >
+            <Calendar size={16} style={{ marginRight: '8px' }} />
+            Event Calendar
+          </button>
+          <button 
+            className={`tab-button ${activeTab === 'register' ? 'active' : ''}`}
+            onClick={() => setActiveTab('register')}
+          >
+            <User size={16} style={{ marginRight: '8px' }} />
+            Event Registration
+          </button>
         </div>
 
-        {/* Hero Section */}
-        <div className="hero-section">
-          <div className="container">
-            <button className="back-button" style={{ display: 'inline-flex', marginBottom: '20px' }}>
-              <ArrowLeft size={20} style={{ marginRight: '8px' }} />
-              Back to Home
-            </button>
-            <h1 className="hero-title">ZETAWA DARK</h1>
-            <p style={{ fontSize: '1.3rem', color: 'black', marginBottom: '10px' }}>
-              Events & Learning Hub
-            </p>
-            <p style={{ fontSize: '1rem', color: '#555', marginBottom: '0' }}>
-              Conferences, workshops, webinars, and networking opportunities
-            </p>
-          </div>
-        </div>
+        {/* Upcoming Events Tab */}
+        {activeTab === 'upcoming' && (
+          <div>
+            <div className="card-custom" style={{ padding: '30px' }}>
+              <h3 style={{ color: '#2d2d2d', marginBottom: '20px', textAlign: 'center' }}>
+                🚀 Upcoming Events
+              </h3>
+              <p style={{ color: '#6c757d', textAlign: 'center', marginBottom: '30px' }}>
+                Details about conferences, webinars, workshops, and other events
+              </p>
+          
 
-        <div className="container pb-5">
-          {/* Navigation Tabs */}
-          <div className="text-center mb-4">
-            <button 
-              className={`tab-button ${activeTab === 'upcoming' ? 'active' : ''}`}
-              onClick={() => setActiveTab('upcoming')}
-            >
-              <Calendar size={16} style={{ marginRight: '8px' }} />
-              Upcoming Events
-            </button>
-            <button 
-              className={`tab-button ${activeTab === 'past' ? 'active' : ''}`}
-              onClick={() => setActiveTab('past')}
-            >
-              <Clock size={16} style={{ marginRight: '8px' }} />
-              Past Events
-            </button>
-            <button 
-              className={`tab-button ${activeTab === 'calendar' ? 'active' : ''}`}
-              onClick={() => setActiveTab('calendar')}
-            >
-              <Calendar size={16} style={{ marginRight: '8px' }} />
-              Event Calendar
-            </button>
-            <button 
-              className={`tab-button ${activeTab === 'register' ? 'active' : ''}`}
-              onClick={() => setActiveTab('register')}
-            >
-              <User size={16} style={{ marginRight: '8px' }} />
-              Event Registration
-            </button>
-          </div>
+              {/* <div className="row"> */}
+                {/* {upcomingEvents.map((event) => (
+                  <div key={event.id} className="col-lg-6 mb-4">
+                    <div className="event-card">
+                      <div className="d-flex justify-content-between align-items-start mb-3">
+                        <div style={{ fontSize: '3rem' }}>{event.image}</div>
+                        <span 
+                          className="type-badge" 
+                          style={{ backgroundColor: getTypeColor(event.type) }}
+                        >
+                          {getEventTypeIcon(event.type)}
+                          {event.type}
+                        </span>
+                      </div>
 
-          {/* Upcoming Events Tab */}
-          {activeTab === 'upcoming' && (
-            <div>
-              <div className="card-custom" style={{ padding: '30px', marginBottom: '30px' }}>
-                <h3 style={{ color: '#fff', marginBottom: '20px', textAlign: 'center' }}>
-                  🚀 Upcoming Events
-                </h3>
-                <p style={{ color: '#adb5bd', textAlign: 'center', marginBottom: '30px' }}>
-                  Details about conferences, webinars, workshops, and other events
-                </p>
+                      <h5 style={{ color: '#2d2d2d', marginBottom: '15px', fontWeight: '600' }}>{event.title}</h5>
+                      
+                      <div className="mb-3">
+                        <div style={{ color: '#6c757d', marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
+                          <MapPin size={16} style={{ marginRight: '8px', color: 'var(--primary-red)' }} />
+                          {event.location}
+                        </div>
+                        <div style={{ color: '#6c757d', marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
+                          <Users size={16} style={{ marginRight: '8px', color: 'var(--primary-red)' }} />
+                          {event.attendees} attendees
+                        </div>
+                      </div>
 
-                <div className="row">
-                  {upcomingEvents.map((event) => (
-                    <div key={event.id} className="col-lg-6 mb-4">
-                      <div className="event-card">
-                        <div className="d-flex justify-content-between align-items-start mb-3">
-                          <div style={{ fontSize: '3rem' }}>{event.image}</div>
-                          <span 
-                            className="type-badge" 
-                            style={{ backgroundColor: getTypeColor(event.type) }}
-                          >
-                            {getEventTypeIcon(event.type)}
-                            {event.type}
+                      <p style={{ color: '#6c757d', fontSize: '0.9rem', marginBottom: '15px', lineHeight: '1.6' }}>
+                        {event.summary}
+                      </p> */}
+
+                      {/* <div className="mb-3">
+                        <h6 style={{ color: '#2d2d2d', marginBottom: '10px', fontWeight: '600' }}>Highlights:</h6>
+                        {event.highlights.map((highlight, index) => (
+                          <div key={index} style={{ color: '#6c757d', fontSize: '0.9rem', marginBottom: '5px' }}>
+                            • {highlight}
+                          </div>
+                        ))}
+                      </div> */}
+
+                      {/* <div className="d-flex justify-content-between align-items-center">
+                        <div className="d-flex gap-3">
+                          <span style={{ color: '#6c757d', fontSize: '0.9rem', display: 'flex', alignItems: 'center' }}>
+                            <Image size={16} style={{ marginRight: '5px' }} />
+                            {event.photos} Photos
+                          </span>
+                          <span style={{ color: '#6c757d', fontSize: '0.9rem', display: 'flex', alignItems: 'center' }}>
+                            <Play size={16} style={{ marginRight: '5px' }} />
+                            {event.videos} Videos
                           </span>
                         </div>
-
-                        <h5 style={{ color: '#fff', marginBottom: '15px' }}>{event.title}</h5>
-                        
-                        <div className="mb-3">
-                          <div style={{ color: '#adb5bd', marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
-                            <Calendar size={16} style={{ marginRight: '8px', color: 'var(--primary-red)' }} />
-                            {event.date}
-                          </div>
-                          <div style={{ color: '#adb5bd', marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
-                            <Clock size={16} style={{ marginRight: '8px', color: 'var(--primary-red)' }} />
-                            {event.time}
-                          </div>
-                          <div style={{ color: '#adb5bd', marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
-                            <MapPin size={16} style={{ marginRight: '8px', color: 'var(--primary-red)' }} />
-                            {event.location}
-                          </div>
-                          <div style={{ color: '#adb5bd', marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
-                            <User size={16} style={{ marginRight: '8px', color: 'var(--primary-red)' }} />
-                            Speaker: {event.speaker}
-                          </div>
-                        </div>
-
-                        <p style={{ color: '#adb5bd', fontSize: '0.9rem', marginBottom: '15px' }}>
-                          {event.description}
-                        </p>
-
-                        <div className="mb-3">
-                          <div className="d-flex justify-content-between align-items-center mb-2">
-                            <small style={{ color: '#fff' }}>Registration Progress</small>
-                            <small style={{ color: '#adb5bd' }}>{event.registered}/{event.capacity}</small>
-                          </div>
-                          <div className="progress-bar-custom">
-                            <div 
-                              className="progress-fill" 
-                              style={{ width: `${(event.registered / event.capacity) * 100}%` }}
-                            ></div>
-                          </div>
-                        </div>
-
-                        <div className="d-flex flex-wrap gap-2 mb-3">
-                          {event.tags.map((tag, index) => (
-                            <span 
-                              key={index}
-                              style={{
-                                background: 'rgba(184, 61, 73, 0.2)',
-                                color: 'var(--primary-red)',
-                                padding: '4px 8px',
-                                borderRadius: '12px',
-                                fontSize: '0.75rem'
-                              }}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-
-                        <button 
-                          className="btn-primary-custom w-100"
-                          onClick={() => {
-                            setSelectedEvent(event);
-                            setActiveTab('register');
-                            setRegistrationData({...registrationData, eventId: event.id});
-                          }}
-                          disabled={!event.registrationOpen}
-                        >
-                          {event.registrationOpen ? 'Register Now' : 'Registration Closed'}
+                        <button className="btn-primary-custom" style={{ padding: '8px 16px' }}>
+                          View Media
                         </button>
                       </div>
                     </div>
-                  ))}
-                </div>
-              </div>
+                  </div> */}
+                {/* ))}
+              </div> */}
             </div>
-          )}
+          </div>
+        )}
 
-          {/* Past Events Tab */}
-          {activeTab === 'past' && (
-            <div>
-              <div className="card-custom" style={{ padding: '30px' }}>
-                <h3 style={{ color: '#fff', marginBottom: '20px', textAlign: 'center' }}>
-                  📚 Past Events
-                </h3>
-                <p style={{ color: '#adb5bd', textAlign: 'center', marginBottom: '30px' }}>
-                  Overview and highlights of past events (photos, summaries, and videos)
-                </p>
+        {/* Event Calendar Tab */}
+        {activeTab === 'calendar' && (
+          <div>
+            <div className="card-custom" style={{ padding: '30px' }}>
+              <h3 style={{ color: '#2d2d2d', marginBottom: '20px', textAlign: 'center' }}>
+                📅 Event Calendar
+              </h3>
+              <p style={{ color: '#6c757d', textAlign: 'center', marginBottom: '30px' }}>
+                Calendar view of all events and important dates
+              </p>
 
-                <div className="row">
-                  {pastEvents.map((event) => (
-                    <div key={event.id} className="col-lg-6 mb-4">
-                      <div className="event-card">
-                        <div className="d-flex justify-content-between align-items-start mb-3">
-                          <div style={{ fontSize: '3rem' }}>{event.image}</div>
-                          <span 
-                            className="type-badge" 
-                            style={{ backgroundColor: getTypeColor(event.type) }}
-                          >
-                            {getEventTypeIcon(event.type)}
-                            {event.type}
-                          </span>
-                        </div>
-
-                        <h5 style={{ color: '#fff', marginBottom: '15px' }}>{event.title}</h5>
-                        
-                        <div className="mb-3">
-                          <div style={{ color: '#adb5bd', marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
-                            <Calendar size={16} style={{ marginRight: '8px', color: 'var(--primary-red)' }} />
-                            {event.date}
-                          </div>
-                          <div style={{ color: '#adb5bd', marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
-                            <MapPin size={16} style={{ marginRight: '8px', color: 'var(--primary-red)' }} />
-                            {event.location}
-                          </div>
-                          <div style={{ color: '#adb5bd', marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
-                            <Users size={16} style={{ marginRight: '8px', color: 'var(--primary-red)' }} />
-                            {event.attendees} attendees
-                          </div>
-                        </div>
-
-                        <p style={{ color: '#adb5bd', fontSize: '0.9rem', marginBottom: '15px' }}>
-                          {event.summary}
-                        </p>
-
-                        <div className="mb-3">
-                          <h6 style={{ color: '#fff', marginBottom: '10px' }}>Highlights:</h6>
-                          {event.highlights.map((highlight, index) => (
-                            <div key={index} style={{ color: '#adb5bd', fontSize: '0.9rem', marginBottom: '5px' }}>
-                              • {highlight}
-                            </div>
-                          ))}
-                        </div>
-
-                        <div className="d-flex justify-content-between align-items-center">
-                          <div className="d-flex gap-3">
-                            <span style={{ color: '#adb5bd', fontSize: '0.9rem', display: 'flex', alignItems: 'center' }}>
-                              <Image size={16} style={{ marginRight: '5px' }} />
-                              {event.photos} Photos
-                            </span>
-                            <span style={{ color: '#adb5bd', fontSize: '0.9rem', display: 'flex', alignItems: 'center' }}>
-                              <Play size={16} style={{ marginRight: '5px' }} />
-                              {event.videos} Videos
-                            </span>
-                          </div>
-                          <button className="btn-primary-custom" style={{ padding: '8px 16px' }}>
-                            View Media
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Event Calendar Tab */}
-          {activeTab === 'calendar' && (
-            <div>
-              <div className="card-custom" style={{ padding: '30px' }}>
-                <h3 style={{ color: '#fff', marginBottom: '20px', textAlign: 'center' }}>
-                  📅 Event Calendar
-                </h3>
-                <p style={{ color: '#adb5bd', textAlign: 'center', marginBottom: '30px' }}>
-                  Calendar view of all events and important dates
-                </p>
-
-                <div className="calendar-grid">
-                  {eventCalendar.map((item, index) => (
-                    <div key={index} className="calendar-item">
-                      <div className="d-flex justify-content-between align-items-center mb-2">
-                        <span style={{ 
-                          color: 'var(--primary-red)', 
-                          fontWeight: '600',
-                          fontSize: '1.1rem'
-                        }}>
-                          {new Date(item.date).toLocaleDateString('en-US', { 
-                            month: 'short', 
-                            day: 'numeric' 
-                          })}
-                        </span>
-                        <span 
-                          className="type-badge"
-                          style={{ 
-                            backgroundColor: getTypeColor(item.type),
-                            fontSize: '0.7rem',
-                            padding: '4px 8px'
-                          }}
-                        >
-                          {item.type}
-                        </span>
-                      </div>
-                      <h6 style={{ color: '#fff', marginBottom: '8px', fontSize: '0.95rem' }}>
-                        {item.event}
-                      </h6>
-                      <div style={{ 
-                        color: '#adb5bd', 
-                        fontSize: '0.8rem',
-                        display: 'flex',
-                        alignItems: 'center'
+              <div className="calendar-grid">
+                {eventCalendar.map((item, index) => (
+                  <div key={index} className="calendar-item">
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <span style={{ 
+                        color: 'var(--primary-red)', 
+                        fontWeight: '600',
+                        fontSize: '1.1rem'
                       }}>
-                        <Calendar size={14} style={{ marginRight: '5px' }} />
-                        {new Date(item.date).getFullYear()}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Event Registration Tab */}
-          {activeTab === 'register' && (
-            <div>
-              <div className="card-custom" style={{ padding: '30px' }}>
-                <h3 style={{ color: '#fff', marginBottom: '20px', textAlign: 'center' }}>
-                  📝 Event Registration
-                </h3>
-                <p style={{ color: '#adb5bd', textAlign: 'center', marginBottom: '30px' }}>
-                  Option to sign up or register for upcoming events
-                </p>
-
-                {selectedEvent && (
-                  <div className="card-custom" style={{ padding: '20px', marginBottom: '30px', background: 'rgba(184, 61, 73, 0.1)' }}>
-                    <h5 style={{ color: 'var(--primary-red)', marginBottom: '10px' }}>
-                      Selected Event: {selectedEvent.title}
-                    </h5>
-                    <p style={{ color: '#adb5bd', fontSize: '0.9rem' }}>
-                      {selectedEvent.date} • {selectedEvent.time} • {selectedEvent.location}
-                    </p>
-                  </div>
-                )}
-
-                <div className="row justify-content-center">
-                  <div className="col-lg-8">
-                    <div className="row">
-                      <div className="col-md-6 mb-3">
-                        <label style={{ color: '#fff', marginBottom: '8px' }}>
-                          <User size={16} style={{ marginRight: '8px' }} />
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control-custom"
-                          placeholder="Enter your full name"
-                          value={registrationData.name}
-                          onChange={(e) => setRegistrationData({...registrationData, phone: e.target.value})}
-                        />
-                      </div>
-                      <div className="col-md-6 mb-3">
-                        <label style={{ color: '#fff', marginBottom: '8px' }}>
-                          <Briefcase size={16} style={{ marginRight: '8px' }} />
-                          Organization/Company
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control-custom"
-                          placeholder="Enter your organization"
-                        />
-                      </div>
-                      <div className="col-12 mb-3">
-                        <label style={{ color: '#fff', marginBottom: '8px' }}>
-                          <FileText size={16} style={{ marginRight: '8px' }} />
-                          Additional Comments
-                        </label>
-                        <textarea
-                          className="form-control-custom"
-                          rows="3"
-                          placeholder="Any special requirements or questions?"
-                          style={{ resize: 'vertical' }}
-                        ></textarea>
-                      </div>
-                    </div>
-
-                    {registrationStatus && (
-                      <div 
-                        className={`alert ${registrationStatus.type === 'success' ? 'alert-success' : 'alert-danger'}`} 
-                        style={{
-                          background: registrationStatus.type === 'success' ? 'rgba(40, 167, 69, 0.2)' : 'rgba(220, 53, 69, 0.2)',
-                          border: `2px solid ${registrationStatus.type === 'success' ? '#28a745' : '#dc3545'}`,
-                          color: registrationStatus.type === 'success' ? '#28a745' : '#dc3545',
-                          borderRadius: '10px',
-                          padding: '15px',
-                          marginBottom: '20px'
+                        {new Date(item.date).toLocaleDateString('en-US', { 
+                          month: 'short', 
+                          day: 'numeric' 
+                        })}
+                      </span>
+                      <span 
+                        className="type-badge"
+                        style={{ 
+                          backgroundColor: getTypeColor(item.type),
+                          fontSize: '0.7rem',
+                          padding: '4px 8px'
                         }}
                       >
-                        <div className="d-flex align-items-center">
-                          {registrationStatus.type === 'success' ? 
-                            <CheckCircle size={20} style={{ marginRight: '10px' }} /> : 
-                            <AlertCircle size={20} style={{ marginRight: '10px' }} />
-                          }
-                          {registrationStatus.message}
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="text-center">
-                      <button 
-                        className="btn-primary-custom"
-                        onClick={() => handleRegistration(registrationData.eventId)}
-                        style={{ padding: '15px 40px', fontSize: '1.1rem' }}
-                      >
-                        Complete Registration
-                      </button>
+                        {item.type}
+                      </span>
                     </div>
-
-                    <div style={{ marginTop: '30px', padding: '20px', background: 'rgba(108, 101, 102, 0.1)', borderRadius: '10px' }}>
-                      <h6 style={{ color: 'var(--primary-red)', marginBottom: '15px' }}>Available Events for Registration:</h6>
-                      <div className="row">
-                        {upcomingEvents.filter(event => event.registrationOpen).map((event) => (
-                          <div key={event.id} className="col-md-6 mb-3">
-                            <div 
-                              style={{ 
-                                background: registrationData.eventId === event.id ? 'rgba(184, 61, 73, 0.2)' : 'transparent',
-                                border: `2px solid ${registrationData.eventId === event.id ? 'var(--primary-red)' : 'var(--dark-border)'}`,
-                                borderRadius: '10px',
-                                padding: '15px',
-                                cursor: 'pointer',
-                                transition: 'all 0.3s'
-                              }}
-                              onClick={() => {
-                                setSelectedEvent(event);
-                                setRegistrationData({...registrationData, eventId: event.id});
-                              }}
-                            >
-                              <div className="d-flex align-items-center mb-2">
-                                <span style={{ fontSize: '1.5rem', marginRight: '10px' }}>{event.image}</span>
-                                <div>
-                                  <h6 style={{ color: '#fff', margin: '0', fontSize: '0.9rem' }}>{event.title}</h6>
-                                  <small style={{ color: '#adb5bd' }}>{event.date}</small>
-                                </div>
-                              </div>
-                              <div className="d-flex justify-content-between align-items-center">
-                                <span 
-                                  className="type-badge"
-                                  style={{ 
-                                    backgroundColor: getTypeColor(event.type),
-                                    fontSize: '0.7rem',
-                                    padding: '4px 8px'
-                                  }}
-                                >
-                                  {event.type}
-                                </span>
-                                <small style={{ color: '#adb5bd' }}>
-                                  {event.capacity - event.registered} seats left
-                                </small>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                    <h6 style={{ color: '#2d2d2d', marginBottom: '8px', fontSize: '0.95rem', fontWeight: '600' }}>
+                      {item.event}
+                    </h6>
+                    <div style={{ 
+                      color: '#6c757d', 
+                      fontSize: '0.8rem',
+                      display: 'flex',
+                      alignItems: 'center'
+                    }}>
+                      <Calendar size={14} style={{ marginRight: '5px' }} />
+                      {new Date(item.date).getFullYear()}
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Additional Information Section */}
-          <div className="row mt-4">
-            <div className="col-md-4 mb-4">
-              <div className="card-custom" style={{ padding: '25px', height: '100%', textAlign: 'center' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '15px' }}>🎯</div>
-                <h5 style={{ color: 'var(--primary-red)', marginBottom: '15px' }}>Upcoming Events</h5>
-                <p style={{ color: '#adb5bd', fontSize: '0.9rem', marginBottom: '15px' }}>
-                  Join our upcoming conferences, workshops, and webinars to enhance your skills and network with industry professionals.
-                </p>
-                <div style={{ color: 'var(--primary-red)', fontWeight: '600', fontSize: '1.5rem' }}>
-                  {upcomingEvents.length}
-                </div>
-                <small style={{ color: '#adb5bd' }}>Events scheduled</small>
-              </div>
-            </div>
-            <div className="col-md-4 mb-4">
-              <div className="card-custom" style={{ padding: '25px', height: '100%', textAlign: 'center' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '15px' }}>📊</div>
-                <h5 style={{ color: 'var(--primary-red)', marginBottom: '15px' }}>Past Events</h5>
-                <p style={{ color: '#adb5bd', fontSize: '0.9rem', marginBottom: '15px' }}>
-                  Explore highlights, photos, and summaries from our successful past events and get inspired for future participation.
-                </p>
-                <div style={{ color: 'var(--primary-red)', fontWeight: '600', fontSize: '1.5rem' }}>
-                  {pastEvents.length}
-                </div>
-                <small style={{ color: '#adb5bd' }}>Events completed</small>
-              </div>
-            </div>
-            <div className="col-md-4 mb-4">
-              <div className="card-custom" style={{ padding: '25px', height: '100%', textAlign: 'center' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '15px' }}>📅</div>
-                <h5 style={{ color: 'var(--primary-red)', marginBottom: '15px' }}>Event Calendar</h5>
-                <p style={{ color: '#adb5bd', fontSize: '0.9rem', marginBottom: '15px' }}>
-                  Stay updated with our comprehensive event calendar featuring all important dates and upcoming activities.
-                </p>
-                <div style={{ color: 'var(--primary-red)', fontWeight: '600', fontSize: '1.5rem' }}>
-                  {eventCalendar.length}
-                </div>
-                <small style={{ color: '#adb5bd' }}>Calendar entries</small>
+                ))}
               </div>
             </div>
           </div>
+        )}
 
-          {/* Call to Action Section */}
-          <div className="card-custom" style={{ 
-            padding: '40px', 
-            marginTop: '30px', 
-            background: 'linear-gradient(135deg, rgba(184, 61, 73, 0.1), rgba(45, 45, 45, 0.9))',
-            textAlign: 'center'
-          }}>
-            <h4 style={{ color: '#fff', marginBottom: '20px' }}>Stay Connected with Our Events</h4>
-            <p style={{ color: '#adb5bd', marginBottom: '30px', fontSize: '1.1rem' }}>
-              Don't miss out on learning opportunities, networking events, and industry insights. 
-              Subscribe to our newsletter for event updates and early bird registration access.
-            </p>
-            <div className="row justify-content-center">
-              <div className="col-md-6">
-                <div className="d-flex">
-                  <input
-                    type="email"
-                    className="form-control-custom"
-                    placeholder="Enter your email for event notifications"
-                    style={{ marginRight: '10px' }}
-                  />
-                  <button className="btn-primary-custom">
-                    Subscribe
-                  </button>
+        {/* Event Registration Tab */}
+        {activeTab === 'register' && (
+          <div>
+            <div className="card-custom" style={{ padding: '30px' }}>
+              <h3 style={{ color: '#2d2d2d', marginBottom: '20px', textAlign: 'center' }}>
+                📝 Event Registration
+              </h3>
+              <p style={{ color: '#6c757d', textAlign: 'center', marginBottom: '30px' }}>
+                Option to sign up or register for upcoming events
+              </p>
+
+              {selectedEvent && (
+                <div className="card-custom" style={{ 
+                  padding: '20px', 
+                  marginBottom: '30px', 
+                  background: 'rgba(126, 58, 65, 0.05)',
+                  border: '2px solid rgba(126, 58, 65, 0.2)'
+                }}>
+                  <h5 style={{ color: 'var(--primary-red)', marginBottom: '10px', fontWeight: '600' }}>
+                    Selected Event: {selectedEvent.title}
+                  </h5>
+                  <p style={{ color: '#6c757d', fontSize: '0.9rem' }}>
+                    {selectedEvent.date} • {selectedEvent.time} • {selectedEvent.location}
+                  </p>
+                </div>
+              )}
+
+              <div className="row justify-content-center">
+                <div className="col-lg-8">
+                  <div className="row">
+                    <div className="col-md-6 mb-3">
+                      <label style={{ color: '#2d2d2d', marginBottom: '8px', fontWeight: '500', display: 'flex', alignItems: 'center' }}>
+                        <User size={16} style={{ marginRight: '8px' }} />
+                        Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control-custom"
+                        placeholder="Enter your full name"
+                        value={registrationData.name}
+                        onChange={(e) => setRegistrationData({...registrationData, name: e.target.value})}
+                      />
+                    </div>
+                    <div className="col-md-6 mb-3">
+                      <label style={{ color: '#2d2d2d', marginBottom: '8px', fontWeight: '500', display: 'flex', alignItems: 'center' }}>
+                        <Mail size={16} style={{ marginRight: '8px' }} />
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        className="form-control-custom"
+                        placeholder="Enter your email"
+                        value={registrationData.email}
+                        onChange={(e) => setRegistrationData({...registrationData, email: e.target.value})}
+                      />
+                    </div>
+                    <div className="col-md-6 mb-3">
+                      <label style={{ color: '#2d2d2d', marginBottom: '8px', fontWeight: '500', display: 'flex', alignItems: 'center' }}>
+                        <Phone size={16} style={{ marginRight: '8px' }} />
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        className="form-control-custom"
+                        placeholder="Enter your phone number"
+                        value={registrationData.phone}
+                        onChange={(e) => setRegistrationData({...registrationData, phone: e.target.value})}
+                      />
+                    </div>
+                    <div className="col-md-6 mb-3">
+                      <label style={{ color: '#2d2d2d', marginBottom: '8px', fontWeight: '500', display: 'flex', alignItems: 'center' }}>
+                        <Briefcase size={16} style={{ marginRight: '8px' }} />
+                        Organization/Company
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control-custom"
+                        placeholder="Enter your organization"
+                      />
+                    </div>
+                    <div className="col-12 mb-3">
+                      <label style={{ color: '#2d2d2d', marginBottom: '8px', fontWeight: '500', display: 'flex', alignItems: 'center' }}>
+                        <FileText size={16} style={{ marginRight: '8px' }} />
+                        Additional Comments
+                      </label>
+                      <textarea
+                        className="form-control-custom"
+                        rows="3"
+                        placeholder="Any special requirements or questions?"
+                        style={{ resize: 'vertical' }}
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  {registrationStatus && (
+                    <div 
+                      className={`${registrationStatus.type === 'success' ? 'alert-success' : 'alert-danger'}`}
+                    >
+                      <div className="d-flex align-items-center">
+                        {registrationStatus.type === 'success' ? 
+                          <CheckCircle size={20} style={{ marginRight: '10px' }} /> : 
+                          <AlertCircle size={20} style={{ marginRight: '10px' }} />
+                        }
+                        {registrationStatus.message}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="text-center">
+                    <button 
+                      className="btn-primary-custom"
+                      onClick={() => handleRegistration(registrationData.eventId)}
+                      style={{ padding: '15px 40px', fontSize: '1.1rem' }}
+                    >
+                      Complete Registration
+                    </button>
+                  </div>
+
+                  <div style={{ 
+                    marginTop: '30px', 
+                    padding: '20px', 
+                    background: '#f8f9fa', 
+                    borderRadius: '15px',
+                    border: '1px solid #e9ecef'
+                  }}>
+                    <h6 style={{ color: 'var(--primary-red)', marginBottom: '15px', fontWeight: '600' }}>Available Events for Registration:</h6>
+                    <div className="row">
+                      {upcomingEvents.filter(event => event.registrationOpen).map((event) => (
+                        <div key={event.id} className="col-md-6 mb-3">
+                          <div 
+                            style={{ 
+                              background: registrationData.eventId === event.id ? 'rgba(126, 58, 65, 0.1)' : 'white',
+                              border: `2px solid ${registrationData.eventId === event.id ? 'var(--primary-red)' : '#e9ecef'}`,
+                              borderRadius: '10px',
+                              padding: '15px',
+                              cursor: 'pointer',
+                              transition: 'all 0.3s'
+                            }}
+                            onClick={() => {
+                              setSelectedEvent(event);
+                              setRegistrationData({...registrationData, eventId: event.id});
+                            }}
+                          >
+                            <div className="d-flex align-items-center mb-2">
+                              <span style={{ fontSize: '1.5rem', marginRight: '10px' }}>{event.image}</span>
+                              <div>
+                                <h6 style={{ color: '#2d2d2d', margin: '0', fontSize: '0.9rem', fontWeight: '600' }}>{event.title}</h6>
+                                <small style={{ color: '#6c757d' }}>{event.date}</small>
+                              </div>
+                            </div>
+                            <div className="d-flex justify-content-between align-items-center">
+                              <span 
+                                className="type-badge"
+                                style={{ 
+                                  backgroundColor: getTypeColor(event.type),
+                                  fontSize: '0.7rem',
+                                  padding: '4px 8px'
+                                }}
+                              >
+                                {event.type}
+                              </span>
+                              <small style={{ color: '#6c757d' }}>
+                                {event.capacity - event.registered} seats left
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div style={{ marginTop: '20px' }}>
-              <small style={{ color: '#adb5bd' }}>
-                🔔 Get notified about new events, early bird discounts, and exclusive workshops
-              </small>
+          </div>
+        )}
+
+        {/* Statistics Section */}
+        <div className="stats-section">
+          <div className="stats-grid">
+            <div className="stat-card">
+              <div style={{ fontSize: '3rem', marginBottom: '15px' }}>🎯</div>
+              <h5 style={{ color: 'var(--primary-red)', marginBottom: '15px', fontWeight: '600' }}>Upcoming Events</h5>
+              <p style={{ color: '#6c757d', fontSize: '0.9rem', marginBottom: '15px', lineHeight: '1.6' }}>
+                Join our upcoming conferences, workshops, and webinars to enhance your skills and network with industry professionals.
+              </p>
+              <div style={{ color: 'var(--primary-red)', fontWeight: '700', fontSize: '2rem' }}>
+                {upcomingEvents.length}
+              </div>
+              <small style={{ color: '#6c757d' }}>Events scheduled</small>
+            </div>
+            <div className="stat-card">
+              <div style={{ fontSize: '3rem', marginBottom: '15px' }}>📊</div>
+              <h5 style={{ color: 'var(--primary-red)', marginBottom: '15px', fontWeight: '600' }}>Past Events</h5>
+              <p style={{ color: '#6c757d', fontSize: '0.9rem', marginBottom: '15px', lineHeight: '1.6' }}>
+                Explore highlights, photos, and summaries from our successful past events and get inspired for future participation.
+              </p>
+              <div style={{ color: 'var(--primary-red)', fontWeight: '700', fontSize: '2rem' }}>
+                {pastEvents.length}
+              </div>
+              <small style={{ color: '#6c757d' }}>Events completed</small>
+            </div>
+            <div className="stat-card">
+              <div style={{ fontSize: '3rem', marginBottom: '15px' }}>📅</div>
+              <h5 style={{ color: 'var(--primary-red)', marginBottom: '15px', fontWeight: '600' }}>Event Calendar</h5>
+              <p style={{ color: '#6c757d', fontSize: '0.9rem', marginBottom: '15px', lineHeight: '1.6' }}>
+                Stay updated with our comprehensive event calendar featuring all important dates and upcoming activities.
+              </p>
+              <div style={{ color: 'var(--primary-red)', fontWeight: '700', fontSize: '2rem' }}>
+                {eventCalendar.length}
+              </div>
+              <small style={{ color: '#6c757d' }}>Calendar entries</small>
             </div>
           </div>
         </div>
+
+        {/* Call to Action Section */}
+        <div className="cta-section">
+          <h4 style={{ marginBottom: '20px', fontSize: '2rem', fontWeight: '600' }}>Stay Connected with Our Events</h4>
+          <p style={{ marginBottom: '30px', fontSize: '1.1rem', opacity: '0.9' }}>
+            Don't miss out on learning opportunities, networking events, and industry insights. 
+            Subscribe to our newsletter for event updates and early bird registration access.
+          </p>
+          <div className="row justify-content-center">
+            <div className="col-md-8">
+              <div className="d-flex" style={{ flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
+                <input
+                  type="email"
+                  className="form-control-custom"
+                  placeholder="Enter your email for event notifications"
+                  style={{ flex: '1', minWidth: '250px' }}
+                />
+                <button className="cta-button">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+          <div style={{ marginTop: '20px' }}>
+            <small style={{ opacity: '0.8' }}>
+              🔔 Get notified about new events, early bird discounts, and exclusive workshops
+            </small>
+          </div>
+        </div>
       </div>
-    </>
+
+      {/* Footer */}
+      <footer style={{ 
+        backgroundColor: '#2d2d2d', 
+        color: 'white', 
+        padding: '3rem 0 2rem 0'
+      }}>
+        <div className="container">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{
+                width: '40px',
+                height: '40px',
+                backgroundColor: 'var(--primary-red)',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                fontWeight: 'bold',
+                fontSize: '1.125rem',
+                marginRight: '12px'
+              }}>
+                Z
+              </div>
+              <div>
+                <div style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>ZETAWA DARK</div>
+                <div style={{ fontSize: '0.9rem', color: '#adb5bd' }}>PRIVATE LIMITED</div>
+              </div>
+            </div>
+            <div style={{ textAlign: 'right' }}>
+              <div style={{ marginBottom: '0.5rem' }}>
+                © 2025 ZETAWA DARK PRIVATE LIMITED. All rights reserved.
+              </div>
+              <div style={{ fontSize: '0.9rem', color: '#adb5bd' }}>
+                Equal opportunity employer committed to diversity and inclusion.
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 };
 

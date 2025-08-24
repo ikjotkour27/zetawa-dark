@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronRight, MapPin, Clock, Users, Award, ArrowRight, Mail, Phone } from 'lucide-react';
+import Nav from './Nav';
+
 
 const Careers = () => {
   const [expandedJob, setExpandedJob] = useState(null);
@@ -105,6 +107,7 @@ const Careers = () => {
       backgroundColor: '#304356ff',
       minHeight: '100vh'
     }}>
+      <Nav/>
       
       {/* Header */}
       <header style={{ 

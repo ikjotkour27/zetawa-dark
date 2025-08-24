@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Download, FileText, Calendar, Users, Bell, TrendingUp, Globe, Award } from 'lucide-react';
+import Nav from './Nav';
 
 const PressRelease = () => {
   const [selectedYear, setSelectedYear] = useState('FY2026');
@@ -120,6 +121,8 @@ const PressRelease = () => {
       backgroundColor: '#304356ff',
       minHeight: '100vh'
     }}>
+      <Nav/>
+
       <style jsx>{`
         :root {
           --primary-red: #7e3a41ff;
@@ -141,37 +144,6 @@ const PressRelease = () => {
         padding: '2rem 0',
         position: 'relative'
       }}>
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'center',
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 2rem',
-          marginBottom: '2rem'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={handleHomeClick}>
-            <div style={{
-              width: '40px',
-              height: '40px',
-              backgroundColor: 'white',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'var(--primary-red)',
-              fontWeight: 'bold',
-              fontSize: '1.125rem',
-              marginRight: '12px'
-            }}>
-              Z
-            </div>
-            <span style={{ color: 'white', fontWeight: 'bold', fontSize: '1.25rem' }}>
-              ZETAWA DARK
-            </span>
-          </div>
-        </div>
-
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
           <h1 style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '1rem' }}>
             Press Release <span style={{color: '#ffebee'}}>Center</span>

@@ -1,25 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronRight, Users, Briefcase, Calendar, Bell, Phone, User, ArrowRight, Globe, Award, Star, TrendingUp } from 'lucide-react';
+// import img1 from '../assets/vite.png';
+import Nav from './Nav';
 
 const MainPage = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
-
-  const navigationItems = [
-    { name: 'Home', path: '/', icon: null },
-    { name: 'Admin Profile', path: '/admin-profile', icon: User },
-    { name: 'Certifications', path: '/certifications', icon: Users },
-    { name: 'Contact Us', path: '/contact', icon: Phone },
-    { name: 'Careers', path: '/careers', icon: Briefcase },
-    // { name: 'Events', path: '/events', icon: Calendar },
-    { name: 'Press Release', path: '/press-release', icon: Bell },
-  ];
-
-  const handleNavClick = (path) => {
-    navigate(path);
-    setIsMenuOpen(false);
-  };
+  const navigate = useNavigate(); // Initialize the navigate function
 
   const stats = [
     { value: "500+", label: "Global Clients", icon: Globe },
@@ -29,37 +15,21 @@ const MainPage = () => {
   ];
 
   const services = [
-    // {
-    //   title: "AI & Machine Learning",
-    //   description: "Intelligent automation and predictive analytics solutions",
-    //   icon: "🤖"
-    // },
-    // {
-    //   title: "Cloud Solutions",
-    //   description: "Scalable cloud infrastructure and migration services",
-    //   icon: "☁️"
-    // },
-    // {
-    //   title: "Cybersecurity",
-    //   description: "Advanced threat protection and risk management",
-    //   icon: "🔒"
-    // },
     {
-  title: "Design",
-  description: "Our web design team has ample years of experience in the core areas of design to build a website that you need.",
-  icon: "🎨"
-},
-{
-  title: "Development",
-  description: "Looking out for customized solutions for your websites? Our team will develop and deliver a website that'll serve your purpose.",
-  icon: "💻"
-},
-{
-  title: "Marketing",
-  description: "With researched digital marketing, we will ensure that new customers and clients are able to find your business",
-  icon: "📈" 
-}
-
+      title: "Design",
+      description: "Our web design team has ample years of experience in the core areas of design to build a website that you need.",
+      icon: "🎨"
+    },
+    {
+      title: "Development",
+      description: "Looking out for customized solutions for your websites? Our team will develop and deliver a website that'll serve your purpose.",
+      icon: "💻"
+    },
+    {
+      title: "Marketing",
+      description: "With researched digital marketing, we will ensure that new customers and clients are able to find your business",
+      icon: "📈" 
+    }
   ];
 
   return (
@@ -82,156 +52,108 @@ const MainPage = () => {
           padding: 0;
           box-sizing: border-box;
         }
+
+        .menu-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          z-index: 1000;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-overlay.active {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .menu-item {
+          transform: translateY(30px);
+          opacity: 0;
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-overlay.active .menu-item {
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        .menu-overlay.active .menu-item:nth-child(1) { transition-delay: 0.1s; }
+        .menu-overlay.active .menu-item:nth-child(2) { transition-delay: 0.15s; }
+        .menu-overlay.active .menu-item:nth-child(3) { transition-delay: 0.2s; }
+        .menu-overlay.active .menu-item:nth-child(4) { transition-delay: 0.25s; }
+        .menu-overlay.active .menu-item:nth-child(5) { transition-delay: 0.3s; }
+        .menu-overlay.active .menu-item:nth-child(6) { transition-delay: 0.35s; }
+
+        .triangle-shape {
+          position: absolute;
+          top: 20%;
+          right: 10%;
+          width: 0;
+          height: 0;
+          border-left: 120px solid transparent;
+          border-right: 120px solid transparent;
+          border-bottom: 200px solid rgba(255, 255, 255, 0.1);
+          transform: rotate(-15deg);
+          animation: float 8s ease-in-out infinite;
+        }
+
+        .triangle-shape-2 {
+          position: absolute;
+          bottom: 30%;
+          left: 8%;
+          width: 0;
+          height: 0;
+          border-left: 80px solid transparent;
+          border-right: 80px solid transparent;
+          border-bottom: 140px solid rgba(255, 255, 255, 0.05);
+          transform: rotate(25deg);
+          animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(-15deg); }
+          50% { transform: translateY(-20px) rotate(-15deg); }
+        }
       `}</style>
 
-      
+      {/* Enhanced Navigation Overlay */}
+      <Nav/>
 
       {/* Hero Section */}
-     <header style={{ 
-      backgroundColor: 'var(--primary-red)',
-      color: 'white',
-      padding: '2rem 0 4rem 0',
-      textAlign: 'center',
-      position: 'relative'
-    }}>
-      {/* Navigation in Hero */}
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center',
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '0 2rem',
-        marginBottom: '4rem'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => navigate('/')}>
-          <div style={{
-            width: '40px',
-            height: '40px',
-            backgroundColor: 'white',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'var(--primary-red)',
-            fontWeight: 'bold',
-            fontSize: '1.125rem',
-            marginRight: '12px'
-          }}>
-            Z
-          </div>
-          <span style={{ color: 'white', fontWeight: 'bold', fontSize: '1.25rem' }}>
-            ZETAWA DARK
-          </span>
-        </div>
-    
-    <button 
-      style={{
-        background: 'none',
-        border: '2px solid white',
+      <header style={{ 
+        backgroundColor: 'var(--primary-red)',
         color: 'white',
-        padding: '8px',
-        borderRadius: '4px',
-        cursor: 'pointer'
-      }}
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
-      onMouseOver={(e) => {
-        e.target.style.backgroundColor = 'white';
-        e.target.style.color = 'var(--primary-red)';
-      }}
-      onMouseOut={(e) => {
-        e.target.style.backgroundColor = 'transparent';
-        e.target.style.color = 'white';
-      }}
-    >
-      {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-    </button>
-    
-    {/* Mobile Menu */}
-    {isMenuOpen && (
-      <div style={{
-        position: 'absolute',
-        top: '100%',
-        left: 0,
-        right: 0,
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(10px)',
-        borderRadius: '0 0 12px 12px',
-        padding: '1rem 0',
-        zIndex: 1000
+        padding: '2rem 0 4rem 0',
+        textAlign: 'center',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        {navigationItems.map((item) => (
-          <div
-            key={item.name}
-            style={{
-              padding: '12px 2rem',
-              color: 'var(--primary-red)',
-              cursor: 'pointer',
-              borderBottom: '1px solid rgba(126, 58, 65, 0.1)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              fontWeight: '500'
-            }}
-            onClick={() => handleNavClick(item.path)}
-            onMouseOver={(e) => {
-              e.target.style.backgroundColor = 'rgba(126, 58, 65, 0.1)';
-              e.target.style.color = '#2d2d2d';
-            }}
-            onMouseOut={(e) => {
-              e.target.style.backgroundColor = 'transparent';
-              e.target.style.color = 'var(--primary-red)';
-            }}
-          >
-            {item.icon && <item.icon size={18} />}
-            {item.name}
-          </div>
-        ))}
-      </div>
-    )}
-  </div>
+        {/* Triangle decorative elements */}
+        <div className="triangle-shape" />
+        <div className="triangle-shape-2" />
+        
 
-  {/* Rest of hero content remains the same */}
-  <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <h1 style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '1rem' }}>
+        {/* Hero content */}
+        
+          <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 10 }}>
+          <h1 className="hero-title" style={{ fontSize: '2.8rem', fontWeight: '700', marginBottom: '1rem' }}>
             Welcome to <span style={{color: '#ffebee'}}>ZETAWA DARK</span>
           </h1>
-          <p style={{ fontSize: '1.5rem', opacity: '0.9', maxWidth: '600px', margin: '0 auto 3rem auto' }}>
+          <p className="hero-subtitle" style={{ fontSize: '1.1rem', opacity: '0.9', maxWidth: '600px', margin: '0 auto 3rem auto' }}>
             A Social Software Agency That Thrives on Your Success
           </p>
-          <p style={{ fontSize: '0.8rem', opacity: '0.7', maxWidth: '900px', margin: '0 auto 1rem auto' }}>
-            If you are looking for an agency to help you create a remarkable presence online, you’ve come to the right place. We can help you take your business to the next level.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button 
-              style={{
-                backgroundColor: 'white',
-                color: 'var(--primary-red)',
-                border: 'none',
-                padding: '1rem 2rem',
-                borderRadius: '8px',
-                fontSize: '1rem',
-                fontWeight: '600',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                transition: 'all 0.3s ease'
-              }}
-              onClick={() => navigate('/contact')}
-              onMouseOver={(e) => {
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 8px 25px rgba(0,0,0,0.2)';
-              }}
-              onMouseOut={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = 'none';
-              }}
-            >
-              Get Started
-              <ArrowRight size={16} />
-            </button>
+           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button 
               style={{
                 backgroundColor: 'transparent',
@@ -244,7 +166,7 @@ const MainPage = () => {
                 cursor: 'pointer',
                 transition: 'all 0.3s ease'
               }}
-              onClick={() => navigate('/careers')}
+              onClick={() => navigate('/about')}
               onMouseOver={(e) => {
                 e.target.style.backgroundColor = 'white';
                 e.target.style.color = 'var(--primary-red)';
@@ -257,7 +179,6 @@ const MainPage = () => {
               Learn More
             </button>
           </div>
-        </div>
         </div>
       </header>
 
@@ -331,7 +252,8 @@ const MainPage = () => {
                   borderRadius: '12px',
                   border: '1px solid #e9ecef',
                   transition: 'all 0.3s ease',
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  cursor: 'pointer'
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.transform = 'translateY(-8px)';
@@ -380,10 +302,12 @@ const MainPage = () => {
               backgroundColor: '#f8f9fa',
               borderRadius: '12px',
               border: '1px solid #e9ecef',
-              transition: 'transform 0.3s ease'
+              transition: 'transform 0.3s ease',
+              cursor: 'pointer'
             }}
             onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
             onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            onClick={() => navigate('/press-release')}
             >
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
                 <Bell size={20} style={{ color: 'var(--primary-red)', marginRight: '0.5rem' }} />
@@ -398,13 +322,11 @@ const MainPage = () => {
               <div 
                 style={{ 
                   color: 'var(--primary-red)', 
-                  cursor: 'pointer', 
                   display: 'flex', 
                   alignItems: 'center', 
                   gap: '0.5rem',
                   fontWeight: '500'
                 }}
-                onClick={() => navigate('/press-release')}
               >
                 Read more <ChevronRight size={16} />
               </div>
@@ -415,10 +337,12 @@ const MainPage = () => {
               backgroundColor: '#f8f9fa',
               borderRadius: '12px',
               border: '1px solid #e9ecef',
-              transition: 'transform 0.3s ease'
+              transition: 'transform 0.3s ease',
+              cursor: 'pointer'
             }}
             onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
             onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            onClick={() => navigate('/events')}
             >
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
                 <Calendar size={20} style={{ color: 'var(--primary-red)', marginRight: '0.5rem' }} />
@@ -433,13 +357,11 @@ const MainPage = () => {
               <div 
                 style={{ 
                   color: 'var(--primary-red)', 
-                  cursor: 'pointer', 
                   display: 'flex', 
                   alignItems: 'center', 
                   gap: '0.5rem',
                   fontWeight: '500'
                 }}
-                onClick={() => navigate('/events')}
               >
                 Learn more <ChevronRight size={16} />
               </div>
@@ -450,10 +372,12 @@ const MainPage = () => {
               backgroundColor: '#f8f9fa',
               borderRadius: '12px',
               border: '1px solid #e9ecef',
-              transition: 'transform 0.3s ease'
+              transition: 'transform 0.3s ease',
+              cursor: 'pointer'
             }}
             onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
             onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            onClick={() => navigate('/careers')}
             >
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
                 <Briefcase size={20} style={{ color: 'var(--primary-red)', marginRight: '0.5rem' }} />
@@ -468,13 +392,11 @@ const MainPage = () => {
               <div 
                 style={{ 
                   color: 'var(--primary-red)', 
-                  cursor: 'pointer', 
                   display: 'flex', 
                   alignItems: 'center', 
                   gap: '0.5rem',
                   fontWeight: '500'
                 }}
-                onClick={() => navigate('/careers')}
               >
                 Apply now <ChevronRight size={16} />
               </div>
