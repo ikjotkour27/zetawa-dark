@@ -1,89 +1,38 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Download, FileText, Calendar, Users, Bell, TrendingUp, Globe, Award } from 'lucide-react';
 import Nav from './Nav';
-
+import { Link } from 'react-router-dom';
+import img1 from '../assets/internshipnotice.jpg';
+import pdf from '../assets/boardResolution.pdf';
 const PressRelease = () => {
-  const [selectedYear, setSelectedYear] = useState('FY2026');
+  const [selectedYear, setSelectedYear] = useState('FY2025');
 
   const pressReleases = {
-    'FY2026': [
-      {
-        id: 1,
-        title: 'Action by ED concluded at all locations',
-        date: 'July 25, 2025',
-        type: 'Official Announcement'
-      },
-      {
-        id: 2,
-        title: 'Recent Action by the enforcement agency - No Impact on Reliance Power, its business operations, financial performance, shareholders, employees, or any other stakeholders',
-        date: 'July 20, 2025',
-        type: 'Business Update'
-      },
-      {
-        id: 3,
-        title: '1st Quarter Results FY26',
-        date: 'July 15, 2025',
-        type: 'Financial Results'
-      },
-      {
-        id: 4,
-        title: 'SBI\'s Action on Reliance Communications has No Impact on Reliance Power Limited - July 3, 2025',
-        date: 'July 3, 2025',
-        type: 'Clarification'
-      },
-      {
-        id: 5,
-        title: 'Reliance NU Energies Receives Letter of Award (LOA) from SJVN Limited, a leading Navratna public sector enterprise for ISTS - Connected Solar + Battery Energy Storage System (BESS) Project - May 28, 2025',
-        date: 'May 28, 2025',
-        type: 'Project Award'
-      },
-      {
-        id: 6,
-        title: 'Reliance Power Signs Commercial Term Sheet For Long-term Power Purchase Agreement (PPA) With Green Digital Private Limited (GDL), Bhutan - May 19, 2025',
-        date: 'May 19, 2025',
-        type: 'Partnership'
-      },
-      {
-        id: 7,
-        title: 'Reliance Power Subsidiary, Reliance Nu Energies, Wins Largest Allocation In ISTS-Connected Solar + Battery Energy Storage System (BESS) Tender Issued By Sjvn, A Leading Navratna Public Sector Enterprise - May 12, 2025',
-        date: 'May 12, 2025',
-        type: 'Tender Win'
-      },
-      {
-        id: 8,
-        title: 'Media Release - 4th Quarter Results FY25',
-        date: 'April 30, 2025',
-        type: 'Financial Results'
-      }
-    ],
+    
     'FY2025': [
       {
-        id: 9,
-        title: 'Annual Report FY2025 Released',
-        date: 'March 31, 2025',
-        type: 'Annual Report'
+        id: 11,
+        title: 'Viral Success Story - Company Achievement Goes Viral',
+        date: 'August 27, 2025',
+        type: 'Official Announcement',
+        source: 'LinkedIn',
+        linkedinUrl: 'https://www.linkedin.com/posts/tabrez-alam-59b6b61b3_like-happy-viral-activity-7335224155493081088-lQ1n'
       },
       {
-        id: 10,
-        title: 'Board Meeting Announcement for Q4 Results',
-        date: 'March 15, 2025',
-        type: 'Board Meeting'
-      }
-    ],
-    'FY2024': [
-      {
-        id: 11,
-        title: 'Strategic Partnership Announcement',
-        date: 'December 20, 2024',
-        type: 'Partnership'
-      }
-    ],
-    'FY2023': [
-      {
         id: 12,
-        title: 'Major Infrastructure Development Update',
-        date: 'November 15, 2023',
-        type: 'Development Update'
+        title: 'Strategic Business Update and Company Activity',
+        date: 'August 15, 2025',
+        type: 'Business Update',
+        source: 'LinkedIn',
+        linkedinUrl: 'https://www.linkedin.com/posts/tabrez-alam-59b6b61b3_activity-7274659404732346368-tjI6'
+      },
+      {
+        id: 13,
+        title: 'Company Growth Milestone Announcement',
+        date: 'August 10, 2025',
+        type: 'Official Announcement',
+        source: 'LinkedIn',
+        linkedinUrl: 'https://www.linkedin.com/posts/tabrez-alam-59b6b61b3_activity-7274659404732346368-tjI6'
       }
     ]
   };
@@ -347,19 +296,29 @@ const PressRelease = () => {
                     onMouseOver={(e) => {
                       e.currentTarget.style.backgroundColor = '#f8f9fa';
                       e.currentTarget.style.transform = 'translateX(8px)';
-                      const button = e.currentTarget.querySelector('.download-btn');
-                      if (button) {
-                        button.style.backgroundColor = 'var(--primary-red-hover)';
-                        button.style.transform = 'translateY(-2px) scale(1.05)';
+                      const downloadBtn = e.currentTarget.querySelector('.download-btn');
+                      const linkedinBtn = e.currentTarget.querySelector('.view-linkedin-btn');
+                      if (downloadBtn) {
+                        downloadBtn.style.backgroundColor = 'var(--primary-red-hover)';
+                        downloadBtn.style.transform = 'translateY(-2px) scale(1.05)';
+                      }
+                      if (linkedinBtn) {
+                        linkedinBtn.style.backgroundColor = '#005582';
+                        linkedinBtn.style.transform = 'translateY(-2px) scale(1.05)';
                       }
                     }}
                     onMouseOut={(e) => {
                       e.currentTarget.style.backgroundColor = 'white';
                       e.currentTarget.style.transform = 'translateX(0)';
-                      const button = e.currentTarget.querySelector('.download-btn');
-                      if (button) {
-                        button.style.backgroundColor = 'var(--primary-red)';
-                        button.style.transform = 'translateY(0) scale(1)';
+                      const downloadBtn = e.currentTarget.querySelector('.download-btn');
+                      const linkedinBtn = e.currentTarget.querySelector('.view-linkedin-btn');
+                      if (downloadBtn) {
+                        downloadBtn.style.backgroundColor = 'var(--primary-red)';
+                        downloadBtn.style.transform = 'translateY(0) scale(1)';
+                      }
+                      if (linkedinBtn) {
+                        linkedinBtn.style.backgroundColor = '#0077b5';
+                        linkedinBtn.style.transform = 'translateY(0) scale(1)';
                       }
                     }}
                   >
@@ -412,30 +371,69 @@ const PressRelease = () => {
                             {release.date}
                           </div>
                         </div>
+                        {release.source && (
+                          <div style={{ 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            color: '#0077b5', 
+                            fontSize: '0.9rem',
+                            fontWeight: '500',
+                            marginTop: '0.5rem'
+                          }}>
+                            <Globe size={16} style={{ marginRight: '8px' }} />
+                            Source: {release.source}
+                          </div>
+                        )}
                       </div>
-                      <button 
-                        className="download-btn"
-                        style={{
-                          backgroundColor: 'var(--primary-red)',
-                          color: 'white',
-                          border: 'none',
-                          padding: '12px 24px',
-                          borderRadius: '12px',
-                          cursor: 'pointer',
-                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '8px',
-                          fontSize: '0.9rem',
-                          fontWeight: '600',
-                          boxShadow: '0 4px 12px rgba(126, 58, 65, 0.3)',
-                          whiteSpace: 'nowrap',
-                          flexShrink: 0
-                        }}
-                      >
-                        <Download size={18} />
-                        Download PDF
-                      </button>
+                      <div style={{ display: 'flex', gap: '12px', flexShrink: 0 }}>
+                        {release.linkedinUrl ? (
+                          <button 
+                            className="view-linkedin-btn"
+                            style={{
+                              backgroundColor: '#0077b5',
+                              color: 'white',
+                              border: 'none',
+                              padding: '12px 20px',
+                              borderRadius: '12px',
+                              cursor: 'pointer',
+                              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '8px',
+                              fontSize: '0.9rem',
+                              fontWeight: '600',
+                              boxShadow: '0 4px 12px rgba(0, 119, 181, 0.3)',
+                              whiteSpace: 'nowrap'
+                            }}
+                            onClick={() => window.open(release.linkedinUrl, '_blank')}
+                          >
+                            <Globe size={18} />
+                            View Post
+                          </button>
+                        ) : null}
+                        <button 
+                          className="download-btn"
+                          style={{
+                            backgroundColor: 'var(--primary-red)',
+                            color: 'white',
+                            border: 'none',
+                            padding: '12px 24px',
+                            borderRadius: '12px',
+                            cursor: 'pointer',
+                            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            fontSize: '0.9rem',
+                            fontWeight: '600',
+                            boxShadow: '0 4px 12px rgba(126, 58, 65, 0.3)',
+                            whiteSpace: 'nowrap'
+                          }}
+                        >
+                          <Download size={18} />
+                          Download PDF
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))
@@ -505,131 +503,132 @@ const PressRelease = () => {
 
       {/* Additional Information Section */}
       <section style={{ padding: '3rem 0', backgroundColor: 'white' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: '600', color: '#2d2d2d', marginBottom: '1rem' }}>
-              Media Resources
-            </h2>
-            <p style={{ fontSize: '1.1rem', color: '#666' }}>
-              Additional resources for media representatives and stakeholders
-            </p>
-          </div>
-          
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
-            gap: '2rem' 
-          }}>
-            <div style={{
-              padding: '2rem',
-              backgroundColor: '#f8f9fa',
-              borderRadius: '12px',
-              border: '1px solid #e9ecef',
-              transition: 'transform 0.3s ease'
-            }}
-            onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
-            onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-                <Bell size={24} style={{ color: 'var(--primary-red)', marginRight: '0.75rem' }} />
-                <h3 style={{ fontSize: '1.3rem', fontWeight: '600', color: '#2d2d2d', margin: '0' }}>
-                  Latest Release
-                </h3>
-              </div>
-              <p style={{ color: '#2d2d2d', marginBottom: '0.75rem', fontWeight: '500' }}>
-                Action by ED concluded at all locations
-              </p>
-              <p style={{ color: '#666', marginBottom: '1.5rem', lineHeight: '1.6' }}>
-                Official announcements regarding recent enforcement directorate actions and their conclusions with no impact on business operations.
-              </p>
-              <button 
-                style={{
-                  backgroundColor: 'var(--primary-red)',
-                  color: 'white',
-                  border: 'none',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  fontWeight: '500'
-                }}
-                onMouseOver={(e) => {
-                  e.target.style.backgroundColor = 'var(--primary-red-hover)';
-                  e.target.style.transform = 'translateY(-1px)';
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.backgroundColor = 'var(--primary-red)';
-                  e.target.style.transform = 'translateY(0)';
-                }}
-              >
-                <Download size={16} />
-                Download PDF
-              </button>
-            </div>
+  <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+      <h2 style={{ fontSize: '2.5rem', fontWeight: '600', color: '#2d2d2d', marginBottom: '1rem' }}>
+        Latest Updates
+      </h2>
+      <p style={{ fontSize: '1.1rem', color: '#666' }}>
+        Additional Updates for media representatives and stakeholders
+      </p>
+    </div>
+    
+    <div style={{ 
+      display: 'grid', 
+      gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
+      gap: '2rem' 
+    }}>
+      <div style={{
+        padding: '2rem',
+        backgroundColor: '#f8f9fa',
+        borderRadius: '12px',
+        border: '1px solid #e9ecef',
+        transition: 'transform 0.3s ease'
+      }}
+      onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
+      onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+          <Bell size={24} style={{ color: 'var(--primary-red)', marginRight: '0.75rem' }} />
+          <h3 style={{ fontSize: '1.3rem', fontWeight: '600', color: '#2d2d2d', margin: '0' }}>
+            Internship Notice
+          </h3>
+        </div>
+        <p style={{ color: '#2d2d2d', marginBottom: '0.75rem', fontWeight: '500' }}>
+          Join Our Dynamic Team - Internship Opportunities Available
+        </p>
+        <p style={{ color: '#666', marginBottom: '1.5rem', lineHeight: '1.6' }}>
+          We are excited to announce internship opportunities across various departments. Join us to gain valuable experience and contribute to our innovative projects.
+        </p>
+        <button 
+          style={{
+            backgroundColor: 'var(--primary-red)',
+            color: 'white',
+            border: 'none',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            fontWeight: '500'
+          }}
+          onMouseOver={(e) => {
+            e.target.style.backgroundColor = 'var(--primary-red-hover)';
+            e.target.style.transform = 'translateY(-1px)';
+          }}
+          onMouseOut={(e) => {
+            e.target.style.backgroundColor = 'var(--primary-red)';
+            e.target.style.transform = 'translateY(0)';
+          }}
+        >
+          <FileText size={16} />
+          <a href={img1} download style={{ color: 'white', textDecoration: 'none' }}>Download Notice</a>
+        </button>
+      </div>
 
-            <div style={{
-              padding: '2rem',
-              backgroundColor: '#f8f9fa',
-              borderRadius: '12px',
-              border: '1px solid #e9ecef',
-              transition: 'transform 0.3s ease'
-            }}
-            onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
-            onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-                <Users size={24} style={{ color: 'var(--primary-red)', marginRight: '0.75rem' }} />
-                <h3 style={{ fontSize: '1.3rem', fontWeight: '600', color: '#2d2d2d', margin: '0' }}>
-                  Media Kit
-                </h3>
-              </div>
-              <p style={{ color: '#666', marginBottom: '1.5rem', lineHeight: '1.6' }}>
-                Comprehensive resources including logos, company overview, executive bios, and press materials for media representatives.
-              </p>
-              <div style={{ marginBottom: '1.5rem' }}>
-                <div style={{ color: '#666', marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--primary-red)', marginRight: '8px' }}>•</span>
-                  Company Logos & Branding Guidelines
-                </div>
-                <div style={{ color: '#666', marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--primary-red)', marginRight: '8px' }}>•</span>
-                  Executive Bios & High-Resolution Photos
-                </div>
-                <div style={{ color: '#666', marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ color: 'var(--primary-red)', marginRight: '8px' }}>•</span>
-                  Company Fact Sheets & Overview
-                </div>
-              </div>
-              <button 
-                style={{
-                  backgroundColor: 'transparent',
-                  color: 'var(--primary-red)',
-                  border: '2px solid var(--primary-red)',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  fontWeight: '500'
-                }}
-                onMouseOver={(e) => {
-                  e.target.style.backgroundColor = 'var(--primary-red)';
-                  e.target.style.color = 'white';
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = 'var(--primary-red)';
-                }}
-              >
-                Access Media Kit
-              </button>
-            </div>
+      <div style={{
+        padding: '2rem',
+        backgroundColor: '#f8f9fa',
+        borderRadius: '12px',
+        border: '1px solid #e9ecef',
+        transition: 'transform 0.3s ease'
+      }}
+      onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
+      onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+          <Users size={24} style={{ color: 'var(--primary-red)', marginRight: '0.75rem' }} />
+          <h3 style={{ fontSize: '1.3rem', fontWeight: '600', color: '#2d2d2d', margin: '0' }}>
+            Board Resolution for FY24-25
+          </h3>
+        </div>
+        <p style={{ color: '#666', marginBottom: '1.5rem', lineHeight: '1.6' }}>
+          Complete board resolution document for the financial year 2024-25, including all strategic decisions and corporate governance updates.
+        </p>
+        <div style={{ marginBottom: '1.5rem' }}>
+          <div style={{ color: '#666', marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+            <span style={{ color: 'var(--primary-red)', marginRight: '8px' }}>•</span>
+            Strategic Decisions & Approvals
+          </div>
+          <div style={{ color: '#666', marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+            <span style={{ color: 'var(--primary-red)', marginRight: '8px' }}>•</span>
+            Corporate Governance Updates
+          </div>
+          <div style={{ color: '#666', marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+            <span style={{ color: 'var(--primary-red)', marginRight: '8px' }}>•</span>
+            Financial Year Planning
           </div>
         </div>
-      </section>
+        <button 
+          style={{
+            backgroundColor: 'transparent',
+            color: 'var(--primary-red)',
+            border: '2px solid var(--primary-red)',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            fontWeight: '500'
+          }}
+          onMouseOver={(e) => {
+            e.target.style.backgroundColor = 'var(--primary-red)';
+            e.target.style.color = 'white';
+          }}
+          onMouseOut={(e) => {
+            e.target.style.backgroundColor = 'transparent';
+            e.target.style.color = 'var(--primary-red)';
+          }}
+        >
+          <a href={pdf} download style={{ color: 'var(--primary-red)', textDecoration: 'none' }}>Download Notice</a>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 
+     
       {/* Footer */}
       <footer style={{ 
         backgroundColor: '#2d2d2d', 

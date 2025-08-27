@@ -81,8 +81,8 @@ const Careers = () => {
       image: img1
     },
     {
-      name: "Rahul Mehta",
-      role: "Data Scientist",
+      name: "Ayush Kumar",
+      role: "HR TEAM",
       department: "Analytics", 
       quote: "The unique vision and collective effort makes  this company a great place to work and very good for the personal and professional growth of an individual.",
       image: img2
