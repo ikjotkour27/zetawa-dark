@@ -411,7 +411,7 @@ const PressRelease = () => {
                             View Post
                           </button>
                         ) : null}
-                        <button 
+                        {/* <button 
                           className="download-btn"
                           style={{
                             backgroundColor: 'var(--primary-red)',
@@ -432,7 +432,7 @@ const PressRelease = () => {
                         >
                           <Download size={18} />
                           Download PDF
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   </div>
@@ -473,6 +473,12 @@ const PressRelease = () => {
             .year-selection-grid {
               grid-template-columns: 1fr !important;
             }
+
+            .view-linkedin-btn{
+            width:50px;
+              flex: 1 !important;
+              justify-content: center !important;
+              }
             
             .release-item-flex {
               flex-direction: column !important;
