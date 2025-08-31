@@ -4,6 +4,8 @@ import Nav from './Nav';
 import { Link } from 'react-router-dom';
 import img1 from '../assets/internshipnotice.jpg';
 import pdf from '../assets/boardResolution.pdf';
+import pdf2 from '../assets/Zetawa_dark_bonus.pdf';
+
 const PressRelease = () => {
   const [selectedYear, setSelectedYear] = useState('FY2025');
 
@@ -524,6 +526,61 @@ const PressRelease = () => {
       gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
       gap: '2rem' 
     }}>
+
+      <div style={{
+        padding: '2rem',
+        backgroundColor: '#f8f9fa',
+        borderRadius: '12px',
+        border: '1px solid #e9ecef',
+        transition: 'transform 0.3s ease'
+      }}
+      onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
+      onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+>
+  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+    <Bell size={24} style={{ color: 'var(--primary-red)', marginRight: '0.75rem' }} />
+    <h3 style={{ fontSize: '1.3rem', fontWeight: '600', color: '#2d2d2d', margin: '0' }}>
+      Bonus Announcement for Interns
+    </h3>
+  </div>
+
+  <p style={{ color: '#2d2d2d', marginBottom: '0.75rem', fontWeight: '500' }}>
+    We are pleased to announce a 10% bonus for all current interns.
+  </p>
+
+  <p style={{ color: '#666', marginBottom: '1.5rem', lineHeight: '1.6' }}>
+    As part of our efforts to recognize and reward the hard work and dedication of our interns, 
+    Zetawa Dark Private Limited has approved a 10% bonus effective from <strong>29-08-2025</strong>. 
+    The bonus will be disbursed accordingly in the current payment cycle.
+  </p>
+  <button 
+    style={{
+      backgroundColor: 'var(--primary-red)',
+      color: 'white',
+      border: 'none',
+      padding: '0.75rem 1.5rem',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      transition: 'all 0.3s ease',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem',
+      fontWeight: '500'
+    }}
+    onMouseOver={(e) => {
+      e.target.style.backgroundColor = 'var(--primary-red-hover)';
+      e.target.style.transform = 'translateY(-1px)';
+    }}
+    onMouseOut={(e) => {
+      e.target.style.backgroundColor = 'var(--primary-red)';
+      e.target.style.transform = 'translateY(0)';
+    }}
+  >
+    <a href={pdf2} download style={{ color: 'white', textDecoration: 'none' }}>Download Notice</a>
+  </button>
+</div>
+
+
       <div style={{
         padding: '2rem',
         backgroundColor: '#f8f9fa',
@@ -573,6 +630,8 @@ const PressRelease = () => {
           <a href={img1} download style={{ color: 'white', textDecoration: 'none' }}>Download Notice</a>
         </button>
       </div>
+
+      
 
       <div style={{
         padding: '2rem',
@@ -630,6 +689,8 @@ const PressRelease = () => {
           <a href={pdf} download style={{ color: 'var(--primary-red)', textDecoration: 'none' }}>Download Notice</a>
         </button>
       </div>
+
+      
     </div>
   </div>
 </section>
