@@ -3,6 +3,11 @@ import { ChevronDown, ChevronRight, MapPin, Clock, Users, Award, ArrowRight, Mai
 import Nav from './Nav';
 import img1 from '../assets/manjeet.jpg';
 import img2 from '../assets/someone.jpg'
+import img3 from '../assets/vite.png';
+import Footer from './Footer';
+import Applyform from './applyform';
+
+ 
 
 const Careers = () => {
   const [expandedJob, setExpandedJob] = useState(null);
@@ -157,7 +162,7 @@ const Careers = () => {
 
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', 
             gap: '2rem',
             marginTop: '2rem'
           }}>
@@ -276,7 +281,7 @@ const Careers = () => {
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 style={{ fontSize: '2.5rem', fontWeight: '600', color: '#2d2d2d', marginBottom: '1rem' }}>
-              Current Job Openings
+              Current Job And Internship Openings
             </h2>
             <p style={{ fontSize: '1.1rem', color: '#666' }}>
               Discover opportunities that match your skills and passion
@@ -369,6 +374,7 @@ const Careers = () => {
                         }}
                         onMouseOver={(e) => e.target.style.backgroundColor = 'var(--primary-red-hover)'}
                         onMouseOut={(e) => e.target.style.backgroundColor = 'var(--primary-red)'}
+                        onClick={() => navigate('/applyform')}
                       >
                         Apply Now
                         <ArrowRight size={16} />
@@ -383,7 +389,7 @@ const Careers = () => {
       </section>
 
       {/* Internships */}
-      <section style={{ padding: '5rem 0', backgroundColor: 'white' }}>
+      {/* <section style={{ padding: '5rem 0', backgroundColor: 'white' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 style={{ fontSize: '2.5rem', fontWeight: '600', color: '#2d2d2d', marginBottom: '1rem' }}>
@@ -476,7 +482,7 @@ const Careers = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Employee Testimonials */}
       <section style={{ padding: '5rem 0', backgroundColor: '#f8f9fa' }}>
@@ -492,7 +498,7 @@ const Careers = () => {
 
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
             gap: '2rem' 
           }}>
             {testimonials.map((testimonial, index) => (
@@ -627,6 +633,8 @@ const Careers = () => {
                 <Mail size={20} />
                 hr@dark.zetawa.com
               </button>
+                {/* { name: 'Phone', url: 'tel:7004265718', color: '#34A853' },
+    { name: 'Email', url: 'mailto:director@zetawa.com', color: '#EA4335' } */}
               <button
                 style={{
                   backgroundColor: 'transparent',
@@ -660,21 +668,7 @@ const Careers = () => {
       </section>
 
       {/* Footer */}
-      <footer style={{ 
-        backgroundColor: '#2d2d2d', 
-        color: 'white', 
-        padding: '2rem 0', 
-        textAlign: 'center' 
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <p style={{ marginBottom: '1rem' }}>
-            © 2025 Your Company Name. All rights reserved.
-          </p>
-          <p style={{ color: '#aaa', fontSize: '0.9rem' }}>
-            Equal opportunity employer committed to diversity and inclusion.
-          </p>
-        </div>
-      </footer>
+       <Footer/>
 
       <style jsx>{`
         *{

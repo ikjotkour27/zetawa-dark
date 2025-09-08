@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import img1 from '../assets/internshipnotice.jpg';
 import pdf from '../assets/boardResolution.pdf';
 import pdf2 from '../assets/Zetawa_dark_bonus.pdf';
+import Footer from './Footer';
 
 const PressRelease = () => {
   const [selectedYear, setSelectedYear] = useState('FY2025');
@@ -110,7 +111,7 @@ const PressRelease = () => {
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', 
             gap: '2rem' 
           }}>
             {stats.map((stat, index) => (
@@ -173,7 +174,7 @@ const PressRelease = () => {
               
               <div style={{ 
                 display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', 
                 gap: '1rem',
                 marginBottom: '2rem'
               }}>
@@ -389,14 +390,14 @@ const PressRelease = () => {
                       </div>
                       <div style={{ display: 'flex', gap: '12px', flexShrink: 0 }}>
                         {release.linkedinUrl ? (
-                          <button 
+                          <button
                             className="view-linkedin-btn"
                             style={{
-                              backgroundColor: '#0077b5',
+                              backgroundColor: '#0077b5', // LinkedIn brand color
                               color: 'white',
                               border: 'none',
-                              padding: '12px 20px',
-                              borderRadius: '12px',
+                              padding:'4px',
+                              borderRadius: '4px',
                               cursor: 'pointer',
                               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                               display: 'flex',
@@ -404,14 +405,15 @@ const PressRelease = () => {
                               gap: '8px',
                               fontSize: '0.9rem',
                               fontWeight: '600',
-                              boxShadow: '0 4px 12px rgba(0, 119, 181, 0.3)',
-                              whiteSpace: 'nowrap'
+                              boxShadow: '0 4px 10px rgba(0, 119, 181, 0.25)',
+                              whiteSpace: 'nowrap',
                             }}
                             onClick={() => window.open(release.linkedinUrl, '_blank')}
                           >
-                            <Globe size={18} />
-                            View Post
+                            <Globe size={18} /> {/* You can keep this if you want a globe */}
+                            <span style={{ fontSize: '0.7rem' }}>View</span>
                           </button>
+
                         ) : null}
                         {/* <button 
                           className="download-btn"
@@ -523,7 +525,7 @@ const PressRelease = () => {
     
     <div style={{ 
       display: 'grid', 
-      gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
+      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
       gap: '2rem' 
     }}>
 
@@ -697,45 +699,7 @@ const PressRelease = () => {
 
      
       {/* Footer */}
-      <footer style={{ 
-        backgroundColor: '#2d2d2d', 
-        color: 'white', 
-        padding: '3rem 0 2rem 0'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{
-                width: '40px',
-                height: '40px',
-                backgroundColor: 'var(--primary-red)',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontWeight: 'bold',
-                fontSize: '1.125rem',
-                marginRight: '12px'
-              }}>
-                Z
-              </div>
-              <div>
-                <div style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>ZETAWA DARK</div>
-                <div style={{ fontSize: '0.9rem', color: '#adb5bd' }}>Press Release Center</div>
-              </div>
-            </div>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ marginBottom: '0.5rem' }}>
-                © 2025 ZETAWA DARK PRIVATE LIMITED. All rights reserved.
-              </div>
-              <div style={{ fontSize: '0.9rem', color: '#adb5bd' }}>
-                Media inquiries: press@zetawadark.com
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 };

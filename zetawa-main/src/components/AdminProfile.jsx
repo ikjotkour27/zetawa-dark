@@ -4,6 +4,7 @@ import image from '../assets/image.png';
 import img1 from '../assets/vite.png';
 import { Link } from 'react-router-dom';
 import Nav from './Nav';
+import Footer from './Footer';
 
 import { 
   User, 
@@ -61,7 +62,8 @@ const AdminProfile = () => {
       "Public relations and stakeholder management"
     ],
     socialLinks: {
-      linkedin: "https://www.linkedin.com/in/tabrez-alam-59b6b61b3/"
+      linkedin: "https://www.linkedin.com/in/tabrez-alam-59b6b61b3/",
+      gmi
     }
   };
 
@@ -176,6 +178,7 @@ const AdminProfile = () => {
                   <span>Joined {adminData.joinDate}</span>
                 </div>
               </div>
+              
               
               <div className="social-links" style={{ display: 'flex', gap: '1rem' }}>
                 {[

@@ -7,6 +7,9 @@ import Contact from './components/Contact';
 import Careers from './components/Careers';
 import Events from './components/Events';
 import PressRelease from './components/PressRelease';
+import Applyform from './components/applyform';
+import Hireforms from './components/Hireforms';
+
 
 const App = () => {
   return (
@@ -21,6 +24,9 @@ const App = () => {
           <Route path="/careers" element={<Careers />} />
           <Route path="/events" element={<Events />} />
           <Route path="/press-release" element={<PressRelease />} /> 
+          <Route path="/hireforms" element={<Hireforms />}/>
+          <Route path="/applyforms" element={<Applyform />}/>
+
         </Routes>
       </div>
     </Router>

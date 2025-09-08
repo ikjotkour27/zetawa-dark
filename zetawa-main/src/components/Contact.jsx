@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Send, MessageSquare } from 'lucide-react';
 import Nav from './Nav';
+import Footer from './Footer';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -638,31 +639,7 @@ const Contact = () => {
         </section>
 
         {/* Footer */}
-        <footer style={{ 
-          backgroundColor: '#2d2d2d', 
-          color: 'white', 
-          padding: isMobile ? '1.5rem 0' : '2rem 0',
-          textAlign: 'center' 
-        }}>
-          <div style={{ 
-            maxWidth: '1200px', 
-            margin: '0 auto', 
-            padding: isMobile ? '0 1rem' : '0 2rem' 
-          }}>
-            <p style={{ 
-              marginBottom: '1rem',
-              fontSize: isMobile ? '0.9rem' : '1rem'
-            }}>
-              © 2025 Your Company Name. All rights reserved.
-            </p>
-            <p style={{ 
-              color: '#aaa', 
-              fontSize: isMobile ? '0.8rem' : '0.9rem'
-            }}>
-              We're committed to protecting your privacy and data.
-            </p>
-          </div>
-        </footer>
+        <Footer/>
       </div>
     </>
   );

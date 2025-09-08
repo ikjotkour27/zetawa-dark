@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Phone, Mail, MapPin, Clock, Send, User, MessageSquare, Award, Shield, CheckCircle, Download, ExternalLink } from 'lucide-react';
 import Nav from './Nav';
+import Footer from './Footer';
+
 
 const Certifications = () => {
   const [searchCertNumber, setSearchCertNumber] = useState('');
@@ -183,7 +185,7 @@ const Certifications = () => {
           <div style={{ maxWidth: '600px', margin: '0 auto' }}>
             <div style={{
               backgroundColor: '#f8f9fa',
-              padding: '3rem',
+              padding: '1.5rem',
               borderRadius: '15px',
               border: '1px solid #e9ecef',
               boxShadow: '0 5px 20px rgba(0,0,0,0.1)'
@@ -201,7 +203,7 @@ const Certifications = () => {
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                   <input
                     type="text"
-                    placeholder="Enter certificate number (e.g., ZD2025001, ZD2025002)"
+                    placeholder="Enter certificate number"
                     value={searchCertNumber}
                     onChange={(e) => setSearchCertNumber(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleValidation()}
@@ -522,7 +524,7 @@ const Certifications = () => {
                 {/* Admin Statistics */}
                 <div style={{ 
                   display: 'grid', 
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', 
                   gap: '2rem',
                   marginBottom: '3rem'
                 }}>
@@ -659,21 +661,7 @@ const Certifications = () => {
       </section>
 
       {/* Footer */}
-      <footer style={{ 
-        backgroundColor: '#2d2d2d', 
-        color: 'white', 
-        padding: '2rem 0', 
-        textAlign: 'center' 
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <p style={{ marginBottom: '1rem', fontSize: '1rem' }}>
-            © 2025 ZETAWA DARK. All rights reserved.
-          </p>
-          <p style={{ color: '#aaa', fontSize: '0.9rem' }}>
-            Secure certificate verification system powered by advanced technology.
-          </p>
-        </div>
-      </footer>
+      <Footer/>
 
       <style>{`
         :root {

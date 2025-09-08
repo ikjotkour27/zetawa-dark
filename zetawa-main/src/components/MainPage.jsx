@@ -3,6 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronRight, Users, Briefcase, Calendar, Bell, Phone, User, ArrowRight, Globe, Award, Star, TrendingUp } from 'lucide-react';
 // import img1 from '../assets/vite.png';
 import Nav from './Nav';
+import Footer from './Footer';
+import Hireforms from './Hireforms';
+
+
 
 const MainPage = () => {
   const navigate = useNavigate(); // Initialize the navigate function
@@ -196,7 +200,7 @@ const MainPage = () => {
           
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', 
             gap: '2rem' 
           }}>
             {stats.map((stat, index) => (
@@ -234,13 +238,14 @@ const MainPage = () => {
               Hire Us For
             </h2>
             <p style={{ fontSize: '1.1rem', color: '#666' }}>
-              Comprehensive solutions for your digital transformation journey
+              Comprehensive solutions for your digital transformation journey. <br />
+              <b>Click on the icons below to hire us and make us a part of your journey.</b> 
             </p>
           </div>
 
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', 
             gap: '2rem' 
           }}>
             {services.map((service, index) => (
@@ -263,7 +268,7 @@ const MainPage = () => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
-                onClick={() => navigate('/contact')}
+                onClick={() => navigate('/hireforms')}
               >
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>
                   {service.icon}
@@ -294,7 +299,7 @@ const MainPage = () => {
           
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', 
             gap: '2rem' 
           }}>
             <div style={{
@@ -332,7 +337,7 @@ const MainPage = () => {
               </div>
             </div>
 
-            <div style={{
+            {/* <div style={{
               padding: '2rem',
               backgroundColor: '#f8f9fa',
               borderRadius: '12px',
@@ -365,7 +370,7 @@ const MainPage = () => {
               >
                 Learn more <ChevronRight size={16} />
               </div>
-            </div>
+            </div> */}
 
             <div style={{
               padding: '2rem',
@@ -419,7 +424,7 @@ const MainPage = () => {
           
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', 
             gap: '2rem' 
           }}>
             <div
@@ -611,46 +616,8 @@ const MainPage = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ 
-        backgroundColor: '#2d2d2d', 
-        color: 'white', 
-        padding: '3rem 0 2rem 0'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{
-                width: '40px',
-                height: '40px',
-                backgroundColor: 'var(--primary-red)',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontWeight: 'bold',
-                fontSize: '1.125rem',
-                marginRight: '12px'
-              }}>
-                Z
-              </div>
-              <div>
-                <div style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>ZETAWA DARK</div>
-                <div style={{ fontSize: '0.9rem', color: '#adb5bd' }}>PRIVATE LIMITED</div>
-              </div>
-            </div>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ marginBottom: '0.5rem' }}>
-                © 2025 ZETAWA DARK PRIVATE LIMITED. All rights reserved.
-              </div>
-              <div style={{ fontSize: '0.9rem', color: '#adb5bd' }}>
-                Equal opportunity employer committed to diversity and inclusion.
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
+    
     </div>
   );
 };
