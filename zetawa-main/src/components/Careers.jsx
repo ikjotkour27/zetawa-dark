@@ -5,7 +5,7 @@ import img1 from '../assets/manjeet.jpg';
 import img2 from '../assets/someone.jpg'
 import img3 from '../assets/vite.png';
 import Footer from './Footer';
-import Applyform from './applyform';
+// import Applyform from './applyform';
 
  
 
@@ -598,44 +598,73 @@ const Careers = () => {
             ))}
           </div>
 
-          <div style={{ 
-            backgroundColor: '#f8f9fa', 
-            padding: '3rem', 
-            borderRadius: '12px', 
-            textAlign: 'center',
-            border: '1px solid #e9ecef'
-          }}>
-            <h3 style={{ fontSize: '1.8rem', fontWeight: '600', color: '#2d2d2d', marginBottom: '1rem' }}>
+          <div
+            style={{
+              backgroundColor: '#f8f9fa',
+              padding: '3rem',
+              borderRadius: '12px',
+              textAlign: 'center',
+              border: '1px solid #e9ecef'
+            }}
+          >
+            <h3
+              style={{
+                fontSize: '1.8rem',
+                fontWeight: 600,
+                color: '#2d2d2d',
+                marginBottom: '1rem'
+              }}
+            >
               Ready to Apply?
             </h3>
-            <p style={{ color: '#666', marginBottom: '2rem', fontSize: '1.1rem' }}>
+            <p
+              style={{
+                color: '#666',
+                marginBottom: '2rem',
+                fontSize: '1.1rem'
+              }}
+            >
               Take the first step towards an exciting career with us
             </p>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <button
+
+            <div
+              style={{
+                display: 'flex',
+                gap: '1rem',
+                justifyContent: 'center',
+                flexWrap: 'wrap'
+              }}
+            >
+              {/* Email Contact Button */}
+              <a
+                href="mailto:hr@dark.zetawa.com"
                 style={{
                   backgroundColor: 'var(--primary-red)',
                   color: 'white',
-                  border: 'none',
                   padding: '1rem 2rem',
                   borderRadius: '8px',
                   fontSize: '1.1rem',
-                  fontWeight: '500',
-                  cursor: 'pointer',
+                  fontWeight: 500,
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.5rem',
+                  textDecoration: 'none',
                   transition: 'background-color 0.3s ease'
                 }}
-                onMouseOver={(e) => e.target.style.backgroundColor = 'var(--primary-red-hover)'}
-                onMouseOut={(e) => e.target.style.backgroundColor = 'var(--primary-red)'}
+                onMouseOver={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'var(--primary-red-hover)')
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'var(--primary-red)')
+                }
               >
                 <Mail size={20} />
                 hr@dark.zetawa.com
-              </button>
-                {/* { name: 'Phone', url: 'tel:7004265718', color: '#34A853' },
-    { name: 'Email', url: 'mailto:director@zetawa.com', color: '#EA4335' } */}
-              <button
+              </a>
+
+              {/* Phone Contact Button */}
+              <a
+                href="tel:+917004265718"
                 style={{
                   backgroundColor: 'transparent',
                   color: 'var(--primary-red)',
@@ -643,27 +672,28 @@ const Careers = () => {
                   padding: '1rem 2rem',
                   borderRadius: '8px',
                   fontSize: '1.1rem',
-                  fontWeight: '500',
-                  cursor: 'pointer',
+                  fontWeight: 500,
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.5rem',
+                  textDecoration: 'none',
                   transition: 'all 0.3s ease'
                 }}
                 onMouseOver={(e) => {
-                  e.target.style.backgroundColor = 'var(--primary-red)';
-                  e.target.style.color = 'white';
+                  e.currentTarget.style.backgroundColor = 'var(--primary-red)';
+                  e.currentTarget.style.color = 'white';
                 }}
                 onMouseOut={(e) => {
-                  e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = 'var(--primary-red)';
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--primary-red)';
                 }}
               >
                 <Phone size={20} />
                 +91 70042 65718
-              </button>
+              </a>
             </div>
           </div>
+
         </div>
       </section>
 

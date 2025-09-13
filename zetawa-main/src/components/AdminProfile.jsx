@@ -63,7 +63,8 @@ const AdminProfile = () => {
     ],
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/tabrez-alam-59b6b61b3/",
-      gmi
+      gmail:"tabrez.zeta@gmail.com",
+      Instagram:""
     }
   };
 
@@ -182,33 +183,45 @@ const AdminProfile = () => {
               
               <div className="social-links" style={{ display: 'flex', gap: '1rem' }}>
                 {[
-                  { icon: <Linkedin size={20} />, link: adminData.socialLinks.linkedin },
-                  { icon: <Instagram size={20} />, link: adminData.socialLinks.twitter },
-                  { icon: <SiGmail size={20} />, link: adminData.socialLinks.gmail }
-                ].map((item, index) => (
-                  <a
-                    key={index}
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                      textDecoration: 'none',
-                      transition: 'all 0.3s ease',
-                      color: 'white'
-                    }}
-                  >
-                    {item.icon}
-                  </a>
-                ))}
+                  adminData.socialLinks.linkedin && {
+                    icon: <Linkedin size={20} />,
+                    link: adminData.socialLinks.linkedin
+                  },
+                  adminData.socialLinks.instagram && {
+                    icon: <Instagram size={20} />,
+                    link: adminData.socialLinks.instagram
+                  },
+                  adminData.socialLinks.gmail && {
+                    icon: <SiGmail size={20} />,
+                    link: `mailto:${adminData.socialLinks.gmail}`
+                  }
+                ]
+                  .filter(Boolean) // remove null/undefined entries
+                  .map((item, index) => (
+                    <a
+                      key={index}
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-link"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                        textDecoration: 'none',
+                        transition: 'all 0.3s ease',
+                        color: 'white'
+                      }}
+                    >
+                      {item.icon}
+                    </a>
+                  ))}
               </div>
+
             </div>
           </div>
         </div>

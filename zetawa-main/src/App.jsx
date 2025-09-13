@@ -7,7 +7,7 @@ import Contact from './components/Contact';
 import Careers from './components/Careers';
 import Events from './components/Events';
 import PressRelease from './components/PressRelease';
-import Applyform from './components/applyform';
+// import Applyform from './components/Applyform';
 import Hireforms from './components/Hireforms';
 
 
@@ -25,7 +25,7 @@ const App = () => {
           <Route path="/events" element={<Events />} />
           <Route path="/press-release" element={<PressRelease />} /> 
           <Route path="/hireforms" element={<Hireforms />}/>
-          <Route path="/applyforms" element={<Applyform />}/>
+          {/* <Route path="/applyforms" element={<Applyform />}/> */}
 
         </Routes>
       </div>

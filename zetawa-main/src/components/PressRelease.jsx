@@ -578,7 +578,7 @@ const PressRelease = () => {
       e.target.style.transform = 'translateY(0)';
     }}
   >
-    <a href={pdf2} download style={{ color: 'white', textDecoration: 'none' }}>Download Notice</a>
+    <a href={pdf2} target="_blank" style={{ color: 'white', textDecoration: 'none' }}>View Notice</a>
   </button>
 </div>
 
@@ -629,7 +629,7 @@ const PressRelease = () => {
           }}
         >
           <FileText size={16} />
-          <a href={img1} download style={{ color: 'white', textDecoration: 'none' }}>Download Notice</a>
+          <a href={img1}  target="_blank" style={{ color: 'white', textDecoration: 'none' }}>View Notice</a>
         </button>
       </div>
 
@@ -688,7 +688,7 @@ const PressRelease = () => {
             e.target.style.color = 'var(--primary-red)';
           }}
         >
-          <a href={pdf} download style={{ color: 'var(--primary-red)', textDecoration: 'none' }}>Download Notice</a>
+          <a href={pdf} target="_blank" style={{ color: 'var(--primary-red)', textDecoration: 'none' }}>View Notice</a>
         </button>
       </div>
 

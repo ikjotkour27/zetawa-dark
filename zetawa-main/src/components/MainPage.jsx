@@ -4,7 +4,7 @@ import { Menu, X, ChevronRight, Users, Briefcase, Calendar, Bell, Phone, User, A
 // import img1 from '../assets/vite.png';
 import Nav from './Nav';
 import Footer from './Footer';
-import Hireforms from './Hireforms';
+// import Hireforms from './Hireforms';
 
 
 
@@ -12,8 +12,8 @@ const MainPage = () => {
   const navigate = useNavigate(); // Initialize the navigate function
 
   const stats = [
-    { value: "500+", label: "Global Clients", icon: Globe },
-    { value: "50+", label: "Countries", icon: Award },
+    { value: "100+", label: "Global Clients", icon: Globe },
+    { value: "2", label: "Countries", icon: Award },
     { value: "98%", label: "Client Satisfaction", icon: Star },
     { value: "24/7", label: "Support", icon: TrendingUp }
   ];
@@ -268,7 +268,7 @@ const MainPage = () => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
-                onClick={() => navigate('/hireforms')}
+                // onClick={() => navigate('/hireforms')}
               >
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>
                   {service.icon}

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import img1 from '../assets/vite.png';
 import { Link } from 'lucide-react';
+import Nav from './Nav';
+
 const Hireforms = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -44,11 +46,11 @@ const Hireforms = () => {
   ];
 
   const budgetOptions = [
-    { id: 'under-5k', label: 'Under $5,000' },
-    { id: '5k-10k', label: '$5,000 - $10,000' },
-    { id: '10k-25k', label: '$10,000 - $25,000' },
-    { id: '25k-50k', label: '$25,000 - $50,000' },
-    { id: '50k-plus', label: '$50,000+' },
+    { id: 'under-5k', label: 'Under Rs5,000' },
+    { id: '5k-10k', label: 'Rs5,000 - Rs10,000' },
+    { id: '10k-25k', label: 'Rs10,000 - Rs25,000' },
+    { id: '25k-50k', label: 'Rs25,000 - Rs50,000' },
+    { id: '50k-plus', label: 'Rs50,000+' },
     { id: 'discuss', label: 'Let\'s Discuss' }
   ];
 
@@ -78,6 +80,7 @@ const Hireforms = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     
     if (selectedServices.length === 0) {
       alert('Please select at least one service.');
@@ -92,53 +95,32 @@ const Hireforms = () => {
 
     alert('Thank you for choosing ZETAWA DARK! We\'ve received your project details and will get back to you within 24 hours.');
     console.log('Form Data:', finalData);
+    
   };
 
   const customStyles = {
     pageBackground: {
-      background: 'linear-gradient(135deg, #4e1e1eff, #804a4aff, #803d3dff)',
+      background: ' #7e3a41ff',
       minHeight: '100vh',
       color: 'white'
     },
     formContainer: {
       background: 'rgba(255, 255, 255, 0.1)',
-      backdropFilter: 'blur(10px)',
       borderColor: 'rgba(255, 255, 255, 0.2)',
-      border: '1px solid rgba(255, 255, 255, 0.2)',
-      borderRadius: '1.5rem',
-      boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
-    },
-    logoIcon: {
-      width: '48px',
-      height: '48px',
-      backgroundColor: 'white',
-      borderRadius: '50%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      position: 'relative'
-    },
-    logoDiamond: {
-      width: '24px',
-      height: '24px',
-      borderRadius: '4px',
-      transform: 'rotate(45deg)',
-      background: 'linear-gradient(45deg, #7d302cff, #B56173)'
+      border: '1px solid rgba(255, 255, 255, 0.2)'
     },
     sectionTitle: {
-      color: '#FFE4E1',
-      borderBottom: '2px solid rgba(255, 255, 255, 0.3)',
+      color: '#2f2b2bff',
+      borderBottom: '2px solid rgba(80, 75, 75, 0.3)',
       paddingBottom: '12px'
     },
     formInput: {
-      background: 'rgba(255, 255, 255, 0.1)',
-      borderColor: 'rgba(255, 255, 255, 0.3)',
-      color: 'white',
+      background: 'rgba(254, 253, 253, 0.98)',
+      borderColor: 'rgba(195, 168, 168, 1)',
+      color: '#2f2b2bff',
       border: '2px solid rgba(255, 255, 255, 0.3)',
-      borderRadius: '0.75rem',
       transition: 'all 0.3s ease',
       fontSize: '1rem',
-      padding: '0.75rem 1rem'
     },
     submitButton: {
       background: 'linear-gradient(45deg, #FFE4E1, #FFF0F5)',
@@ -150,7 +132,6 @@ const Hireforms = () => {
       letterSpacing: '1px',
       transition: 'all 0.3s ease',
       transform: 'translateY(0)',
-      boxShadow: '0 4px 15px 0 rgba(0, 0, 0, 0.2)',
       padding: '1rem 2.5rem',
       fontSize: '1.1rem'
     }
@@ -159,23 +140,23 @@ const Hireforms = () => {
   const handleInputFocus = (e) => {
     e.target.style.borderColor = '#FFE4E1';
     e.target.style.boxShadow = '0 0 20px rgba(255, 228, 225, 0.3)';
-    e.target.style.background = 'rgba(255, 255, 255, 0.15)';
+    // e.target.style.background = 'rgba(255, 255, 255, 0.15)';
   };
 
   const handleInputBlur = (e) => {
     e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)';
     e.target.style.boxShadow = 'none';
-    e.target.style.background = 'rgba(255, 255, 255, 0.1)';
+    // e.target.style.background = 'rgba(255, 255, 255, 0.1)';
   };
 
   const handleButtonHover = (e) => {
-    e.target.style.background = 'linear-gradient(45deg, #FFF0F5, #FFE4E1)';
+    // e.target.style.background = 'linear-gradient(45deg, #FFF0F5, #FFE4E1)';
     e.target.style.transform = 'translateY(-4px)';
     e.target.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)';
   };
 
   const handleButtonLeave = (e) => {
-    e.target.style.background = 'linear-gradient(45deg, #FFE4E1, #FFF0F5)';
+    // e.target.style.background = 'linear-gradient(45deg, #FFE4E1, #FFF0F5)';
     e.target.style.transform = 'translateY(0)';
     e.target.style.boxShadow = '0 4px 15px 0 rgba(0, 0, 0, 0.2)';
   };
@@ -186,6 +167,7 @@ const Hireforms = () => {
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" 
         rel="stylesheet" 
       />
+      <Nav/>
       
       <div style={customStyles.pageBackground}>
         <div className="container">
@@ -193,28 +175,6 @@ const Hireforms = () => {
             <div className="col-12 col-lg-8">
               {/* Header */}
               <div className="text-center mb-5 pt-5">
-                <div className="d-flex align-items-center justify-content-center mb-4">
-                   <div className="logo-container" style={{
-              width: '36px',
-              height: '36px',
-              backgroundColor: 'white',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'var(--primary-red)',
-              fontWeight: 'bold',
-              fontSize: '1rem',
-              marginRight: '12px'
-            }}>
-              <Link to="/">
-                <img src={img1} alt="Logo" style={{ width: '48px', height: '48px' }} />
-              </Link>
-            </div>
-                  <h1 className="display-4 fw-bold mb-0" style={{ letterSpacing: '2px' }}>
-                    ZETAWA DARK
-                  </h1>
-                </div>
                 <h2 className="display-1 mb-4 fw-light">Hire Our Team</h2>
                 <p className="fs-4 fw-light" style={{ opacity: '0.9' }}>
                   Let's Transform Your Vision Into Digital Reality
@@ -349,7 +309,7 @@ const Hireforms = () => {
                       {services.map(service => (
                         <div key={service.id} className="col-md-4">
                           <div 
-                            className={`card h-100 ${selectedServices.includes(service.id) ? 'border-light' : ''}`}
+                            className={`card h-100 Rs{selectedServices.includes(service.id) ? 'border-light' : ''}`}
                             style={{
                               background: selectedServices.includes(service.id) 
                                 ? 'rgba(255, 228, 225, 0.2)' 
@@ -462,7 +422,7 @@ const Hireforms = () => {
                       {budgetOptions.map(option => (
                         <div key={option.id} className="col-md-4 col-sm-6">
                           <div 
-                            className={`card ${selectedBudget === option.id ? 'border-light' : ''}`}
+                            className={`card Rs{selectedBudget === option.id ? 'border-light' : ''}`}
                             style={{
                               background: selectedBudget === option.id 
                                 ? 'rgba(255, 228, 225, 0.2)' 
@@ -569,6 +529,7 @@ const Hireforms = () => {
                       onClick={handleSubmit}
                       onMouseEnter={handleButtonHover}
                       onMouseLeave={handleButtonLeave}
+
                     >
                       Start Our Journey Together
                     </button>

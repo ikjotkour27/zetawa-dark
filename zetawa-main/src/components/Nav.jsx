@@ -318,7 +318,8 @@ function Nav() {
             <div className="logo-container" style={{
               width: '36px',
               height: '36px',
-              backgroundColor: 'white',
+              // backgroundColor: 'white',
+
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',

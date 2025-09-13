@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, Mail, MapPin, Send, MessageSquare } from 'lucide-react';
+import { Phone, Mail,Instagram,Linkedin, MapPin, Send, MessageSquare } from 'lucide-react';
 import Nav from './Nav';
 import Footer from './Footer';
 
@@ -79,13 +79,14 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: 'Phone Numbers',
+      title: 'Helpline',
       details: [
         { label: 'Main Office', value: '+91 70042 65718' },
-        { label: 'Customer Support', value: 'Not Available' },
-        { label: 'Sales Inquiries', value: 'Not Available' }
+        { label: 'Customer Support', value: 'support@dark.zetawa.com' },
+        { label: 'Sales Inquiries', value: 'sales@dark.zetawa.com' }
       ]
     },
+ 
     {
       icon: Mail,
       title: 'Email Addresses',
@@ -107,12 +108,35 @@ const Contact = () => {
     }
   ];
 
-  const socialLinks = [
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/company/107492000/admin/dashboard/', color: '#0077B5' },
-    { name: 'Instagram', url: 'https://www.instagram.com/zetawadark?igsh=NXQ0dTdram83ejQx', color: '#E4405F' },
-    { name: 'Phone', url: 'tel:7004265718', color: '#34A853' },
-    { name: 'Email', url: 'mailto:director@zetawa.com', color: '#EA4335' }
-  ];
+  const iconMap = {
+  LinkedIn: <Linkedin size={isMobile ? 16 : 20} />,
+  Instagram: <Instagram size={isMobile ? 16 : 20} />,
+  Phone: <Phone size={isMobile ? 16 : 20} />,
+  Email: <Mail size={isMobile ? 16 : 20} />
+};
+
+const socialLinks = [
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/company/107492000/admin/dashboard/',
+    color: '#0077B5'
+  },
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/zetawadark?igsh=NXQ0dTdram83ejQx',
+    color: '#E4405F'
+  },
+  {
+    name: 'Phone',
+    url: 'tel:7004265718',
+    color: '#34A853'
+  },
+  {
+    name: 'Email',
+    url: 'mailto:director@zetawa.com',
+    color: '#EA4335'
+  }
+];
 
   return (
     <>
@@ -540,12 +564,14 @@ const Contact = () => {
                     Follow us on social media for the latest updates and news.
                   </p>
                   
-                  <div style={{ 
-                    display: 'flex', 
-                    gap: '1rem', 
-                    flexWrap: 'wrap',
-                    justifyContent: isMobile ? 'center' : 'flex-start'
-                  }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      gap: '1rem',
+                      flexWrap: 'wrap',
+                      justifyContent: isMobile ? 'center' : 'flex-start'
+                    }}
+                  >
                     {socialLinks.map((social, index) => (
                       <a
                         key={index}
@@ -561,15 +587,13 @@ const Contact = () => {
                           color: 'white',
                           textDecoration: 'none',
                           transition: 'transform 0.2s',
-                          fontWeight: '600',
-                          fontSize: isMobile ? '0.8rem' : '1rem'
                         }}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onMouseOver={(e) => e.target.style.transform = 'scale(1.1)'}
-                        onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+                        onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+                        onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                       >
-                        {social.name.charAt()}
+                        {iconMap[social.name]}
                       </a>
                     ))}
                   </div>
