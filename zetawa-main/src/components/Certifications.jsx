@@ -15,14 +15,12 @@ const Certifications = () => {
   const certificates = [
     {
       id: 1,
-      certificateNumber: 'zetawa00',
-      internName: 'Manjeet',
-      course: 'Full Stack Development',
-      issueDate: '2025-01-15',
-      completionDate: '2025-01-10',
-      grade: 'A',
+      certificateNumber: 'ZD202501',
+      internName: 'Manjeet Kumar',
+      course: 'Data Analyst',
+      issueDate: '2025-05-05',
+      completionDate: '2025-07-05',
       status: 'Valid',
-      mentor: 'Sarah Johnson',
       duration: '3 months',
       driveLink: 'https://drive.google.com/file/d/1bpJ_rbaJqRHp287CgEURkkoskv96JwyG/view?usp=drivesdk'
     }
@@ -111,7 +109,6 @@ const Certifications = () => {
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '40px', fontSize: '14px', color: '#666' }}>
         <div>
           <p><strong>Certificate No:</strong> {certificate.certificateNumber}</p>
-          <p><strong>Grade:</strong> {certificate.grade}</p>
         </div>
         <div>
           <p><strong>Date:</strong> {certificate.completionDate}</p>
@@ -119,11 +116,7 @@ const Certifications = () => {
         </div>
       </div>
 
-      <div style={{ marginTop: '30px', paddingTop: '20px', borderTop: '2px solid #eee' }}>
-        <p style={{ fontSize: '12px', color: '#999' }}>
-          Mentor: {certificate.mentor} | Authorized by ZETAWA DARK
-        </p>
-      </div>
+      
     </div>
   );
 
@@ -331,32 +324,6 @@ const Certifications = () => {
           </div>
         </div>
       </section>
-
-      {/* Certificate Display */}
-      {validationResult?.data && validationResult.data.status === 'Valid' && (
-        <section className="section-padding" style={{ padding: '5rem 0', backgroundColor: '#f8f9fa' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 className="section-title" style={{ fontSize: '2.5rem', fontWeight: '600', color: '#2d2d2d', marginBottom: '1rem' }}>
-                Your Official Certificate
-              </h2>
-              <p style={{ fontSize: '1.1rem', color: '#666' }}>
-                Congratulations! Your certificate has been successfully verified
-              </p>
-            </div>
-            
-            <div style={{ 
-              backgroundColor: 'white', 
-              padding: '3rem', 
-              borderRadius: '20px',
-              boxShadow: '0 15px 35px rgba(0,0,0,0.1)',
-              border: '1px solid #e9ecef'
-            }}>
-              <CertificateImage certificate={validationResult.data} />
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Admin Section */}
       <section className="section-padding" style={{ padding: '5rem 0', backgroundColor: 'white' }}>
@@ -567,7 +534,7 @@ const Certifications = () => {
                     <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                       <thead>
                         <tr style={{ backgroundColor: '#f8f9fa' }}>
-                          {['Certificate #', 'Intern Name', 'Course', 'Completion Date', 'Grade', 'Mentor', 'Status'].map((header) => (
+                          {['Certificate #', 'Intern Name', 'Course', 'Completion Date', 'Status'].map((header) => (
                             <th key={header} style={{
                               padding: '1rem',
                               textAlign: 'left',
@@ -591,8 +558,6 @@ const Certifications = () => {
                             </td>
                             <td style={{ padding: '1rem', color: '#666' }}>{cert.course}</td>
                             <td style={{ padding: '1rem', color: '#666' }}>{cert.completionDate}</td>
-                            <td style={{ padding: '1rem', color: '#2d2d2d', fontWeight: '600' }}>{cert.grade}</td>
-                            <td style={{ padding: '1rem', color: '#666' }}>{cert.mentor}</td>
                             <td style={{ padding: '1rem' }}>
                               <span style={{
                                 padding: '0.5rem 1rem',
