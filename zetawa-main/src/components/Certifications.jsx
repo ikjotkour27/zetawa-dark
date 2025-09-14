@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ArrowLeft, Phone, Mail, MapPin, Clock, Send, User, MessageSquare, Award, Shield, CheckCircle, Download, ExternalLink } from 'lucide-react';
 import Nav from './Nav';
 import Footer from './Footer';
-
+// https://drive.google.com/file/d/1bpJ_rbaJqRHp287CgEURkkoskv96JwyG/view?usp=drivesdk
 
 const Certifications = () => {
   const [searchCertNumber, setSearchCertNumber] = useState('');
@@ -15,8 +15,8 @@ const Certifications = () => {
   const certificates = [
     {
       id: 1,
-      certificateNumber: 'ZD2025001',
-      internName: 'John Doe',
+      certificateNumber: 'zetawa00',
+      internName: 'Manjeet',
       course: 'Full Stack Development',
       issueDate: '2025-01-15',
       completionDate: '2025-01-10',
@@ -24,20 +24,7 @@ const Certifications = () => {
       status: 'Valid',
       mentor: 'Sarah Johnson',
       duration: '3 months',
-      driveLink: 'https://drive.google.com/file/d/1ABcDEfGhIjKlMnOpQrStUvWxYz123456/view?usp=sharing'
-    },
-    {
-      id: 2,
-      certificateNumber: 'ZD2025002',
-      internName: 'Jane Smith',
-      course: 'Digital Marketing',
-      issueDate: '2025-01-20',
-      completionDate: '2025-01-18',
-      grade: 'A+',
-      status: 'Valid',
-      mentor: 'Michael Brown',
-      duration: '2 months',
-      driveLink: 'https://drive.google.com/file/d/1XyZaBcDeFgHiJkLmNoPqRsTuVwX789012/view?usp=sharing'
+      driveLink: 'https://drive.google.com/file/d/1bpJ_rbaJqRHp287CgEURkkoskv96JwyG/view?usp=drivesdk'
     }
   ];
 
@@ -310,8 +297,8 @@ const Certifications = () => {
                       >
                         <ExternalLink size={20} />
                         View Certificate
-                      </button>
-                      <button
+                      </button> 
+                      {/* <button
                         onClick={() => handleDownloadCertificate(validationResult.data.driveLink)}
                         style={{
                           backgroundColor: '#007bff',
@@ -335,7 +322,7 @@ const Certifications = () => {
                       >
                         <Download size={20} />
                         Download PDF
-                      </button>
+                      </button> */}
                     </div>
                   )}
                 </div>
@@ -511,8 +498,8 @@ const Certifications = () => {
                   </div>
                   <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
                     <small style={{ color: '#888', fontSize: '0.9rem' }}>
-                      Demo credentials: admin / admin123<br />
-                      Try certificate numbers: ZD2025001, ZD2025002
+                      {/* Demo credentials: admin / admin123<br />
+                      Try certificate numbers: ZD2025001, ZD2025002 */}
                     </small>
                   </div>
                 </div>
