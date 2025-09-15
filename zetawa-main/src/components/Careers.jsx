@@ -13,48 +13,84 @@ const Careers = () => {
   const [expandedJob, setExpandedJob] = useState(null);
   const [activeTab, setActiveTab] = useState('culture');
 
-  const jobOpenings = [
-    {
-      id: 1,
-      title: "Senior Software Engineer",
-      department: "Technology",
-      location: "Remote",
-     type: "Full-time / Intern",
-      experience: "Freshers / 0-2 years",
-      description: "Lead development of enterprise applications using modern technologies. Work with cross-functional teams to deliver high-quality solutions.",
-      requirements: ["Bachelor's in Computer Science", "Fresher", "Proficiency in React, Node.js", "Experience with cloud platforms"]
-    },
-    {
-      id: 2,
-      title: "Data Scientist",
-      department: "Analytics",
-      location: "Remote",
+   const jobOpenings = [
+  {
+    id: 1,
+    title: "3D Animation",
+    department: "Technology",
+    location: "Remote",
     type: "Full-time / Intern",
-      experience: "Freshers / 0-2 years",
-      description: "Analyze complex datasets to drive business insights and develop machine learning models for predictive analytics.",
-      requirements: ["Master's in Data Science/Statistics", "Python, R expertise", "ML/AI experience", "Strong analytical skills"]
-    },
-    {
-      id: 3,
-      title: "UX Designer",
-      department: "Design",
-      location: "Remote",
-     type: "Full-time / Intern",
-      experience: "Freshers / 0-2 years",
-      description: "Design intuitive user experiences for digital products. Collaborate with product teams to create user-centered designs.",
-      requirements: ["Bachelor's in Design", "Figma, Adobe Creative Suite", "User research experience", "Portfolio required"]
-    },
-    {
-      id: 4,
-      title: "Business Analyst",
-      department: "Strategy",
-      location: "Remote",
-      type: "Full-time / Intern",
-      experience: "Freshers / 0-2 years",
-      description: "Analyze business processes and requirements to drive strategic initiatives and operational improvements.",
-      requirements: ["MBA or equivalent", "Business analysis experience", "Strong communication skills", "Process improvement knowledge"]
-    }
-  ];
+    experience: "Freshers / 0-2 years",
+    description: "Create high-quality 3D animations and visual effects for digital media, games, and applications. Collaborate with designers and developers to bring creative concepts to life.",
+    requirements: [
+      "Bachelor's in Animation/Design or related field",
+      "Strong skills in Blender, Maya, or 3ds Max",
+      "Knowledge of texturing, rigging, and rendering",
+      "Creative storytelling and visualization skills"
+    ]
+  },
+  {
+    id: 2,
+    title: "Android Developer",
+    department: "Analytics",
+    location: "Remote",
+    type: "Full-time / Intern",
+    experience: "Freshers / 0-2 years",
+    description: "Develop and maintain Android applications with a focus on performance, usability, and scalability. Work closely with product and design teams to deliver seamless user experiences.",
+    requirements: [
+      "Bachelor's in Computer Science/Engineering",
+      "Proficiency in Java/Kotlin",
+      "Experience with Android Studio and SDKs",
+      "Understanding of REST APIs and mobile UI design"
+    ]
+  },
+  {
+    id: 3,
+    title: "UX Designer",
+    department: "Design",
+    location: "Remote",
+    type: "Full-time / Intern",
+    experience: "Freshers / 0-2 years",
+    description: "Design user-centered interfaces and experiences across web and mobile platforms. Conduct research, wireframing, prototyping, and usability testing to improve product design.",
+    requirements: [
+      "Bachelor's in Design, HCI, or related field",
+      "Proficiency in Figma, Adobe XD, or Sketch",
+      "Experience with wireframes, prototypes, and user testing",
+      "Strong portfolio demonstrating UX/UI design skills"
+    ]
+  },
+  {
+    id: 4,
+    title: "Software Developer",
+    department: "Strategy",
+    location: "Remote",
+    type: "Full-time / Intern",
+    experience: "Freshers / 0-2 years",
+    description: "Build, test, and deploy software applications across different platforms. Collaborate with teams to design efficient and scalable solutions.",
+    requirements: [
+      "Bachelor's in Computer Science/IT",
+      "Proficiency in Java, Python, or C++",
+      "Knowledge of databases (MySQL, MongoDB)",
+      "Familiarity with Git and version control"
+    ]
+  },
+  {
+    id: 5,
+    title: "Machine Learning",
+    department: "Strategy",
+    location: "Remote",
+    type: "Full-time / Intern",
+    experience: "Freshers / 0-2 years",
+    description: "Develop and implement machine learning models for solving real-world problems. Work with large datasets to build predictive and analytical solutions.",
+    requirements: [
+      "Bachelor’s/Master’s in Computer Science, AI, or Data Science",
+      "Strong programming skills in Python",
+      "Experience with ML libraries like TensorFlow, PyTorch, or Scikit-learn",
+      "Understanding of statistics and data preprocessing"
+    ]
+  }
+];
+
 
   const internships = [
     {
@@ -80,10 +116,10 @@ const Careers = () => {
   const testimonials = [
     {
       name: "Manjeet Kumaar",
-      role: "Robotics Engineer",
+      role: "HR TEAM",
       department: "Technology",
-      quote: "Zetawa Dark Private Limited, a company making a difference in the software industry. Founded by visionary Tabrej Zeta, it provides real-world project experience to new college students, nurturing young talent and empowering them to build innovative solutions. With a focus on innovation, teamwork, and mentorship, Zetawa Dark is shaping the next generation of tech leaders. I've seen its impact firsthand and can confidently say it's one of the best companies out there. Kudos to Tabrej Zeta and the team for creating an incredible opportunity for students and professionals alike!",
-      image: img1
+     quote: "Zetawa Dark Private Limited, founded by Tabrej Zeta, is empowering students with real-world project experience and fostering innovation, teamwork, and mentorship. A truly impactful company shaping the next generation of tech leaders!"
+, image: img1
     },
     {
       name: "Ayush Kumar",
@@ -374,10 +410,11 @@ const Careers = () => {
                         }}
                         onMouseOver={(e) => e.target.style.backgroundColor = 'var(--primary-red-hover)'}
                         onMouseOut={(e) => e.target.style.backgroundColor = 'var(--primary-red)'}
-                        onClick={() => navigate('/applyform')}
+                        
                       >
-                        Apply Now
-                        <ArrowRight size={16} />
+                        <a target="_blank" style={{color:"white" , textDecoration:"none"}} href="https://forms.gle/2gMcHVynaLx7Bei38">Apply Now</a>
+                        
+                       
                       </button>
                     </div>
                   </div>
