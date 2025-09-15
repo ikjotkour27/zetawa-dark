@@ -64,7 +64,8 @@ const AdminProfile = () => {
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/tabrez-alam-59b6b61b3/",
       gmail:"tabrez.zeta@gmail.com",
-      Instagram:""
+      instagram :"https://www.instagram.com/tabrez_zeta?igsh=aXZveDRxend3NGpv",
+      twitter:"https://x.com/tabrez_zeta?t=YaorG8xFInFR2bLaPxG0TA&s=08"
     }
   };
 
@@ -190,6 +191,10 @@ const AdminProfile = () => {
                   adminData.socialLinks.instagram && {
                     icon: <Instagram size={20} />,
                     link: adminData.socialLinks.instagram
+                  },
+                  adminData.socialLinks.instagram && {
+                    icon: <Twitter size={20} />,
+                    link: adminData.socialLinks.twitter
                   },
                   adminData.socialLinks.gmail && {
                     icon: <SiGmail size={20} />,
