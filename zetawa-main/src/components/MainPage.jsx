@@ -182,6 +182,30 @@ const MainPage = () => {
             >
               Learn More
             </button>
+            <button 
+              style={{
+                backgroundColor: 'white',
+                color: 'var(--primary-red)',
+                border: '2px solid white',
+                padding: '1rem 2rem',
+                borderRadius: '8px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              onClick={() => navigate('/aboutus')}
+              onMouseOver={(e) => {
+                e.target.style.backgroundColor = 'transparent';
+                e.target.style.color = 'White';
+              }}
+              onMouseOut={(e) => {
+                e.target.style.backgroundColor = 'white';
+                e.target.style.color = 'var(--primary-red)';
+              }}
+            >
+              About Us
+            </button>
           </div>
         </div>
       </header>
@@ -268,7 +292,7 @@ const MainPage = () => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
-                // onClick={() => navigate('/hireforms')}
+                onClick={() => navigate('/contact')}
               >
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>
                   {service.icon}

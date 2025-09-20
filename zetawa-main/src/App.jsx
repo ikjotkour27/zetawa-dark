@@ -9,6 +9,7 @@ import Events from './components/Events';
 import PressRelease from './components/PressRelease';
 // import Applyform from './components/Applyform';
 import Hireforms from './components/Hireforms';
+import AboutUs from './components/AboutUs'
 
 
 const App = () => {
@@ -25,6 +26,8 @@ const App = () => {
           <Route path="/events" element={<Events />} />
           <Route path="/press-release" element={<PressRelease />} /> 
           <Route path="/hireforms" element={<Hireforms />}/>
+          <Route path="/aboutus" element={<AboutUs />}/>
+
           {/* <Route path="/applyforms" element={<Applyform />}/> */}
 
         </Routes>

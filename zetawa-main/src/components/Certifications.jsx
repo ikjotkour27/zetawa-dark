@@ -54,7 +54,7 @@ const Certifications = () => {
   };
 
   const handleAdminLogin = () => {
-    if (adminCredentials.username === 'noyanbey' && adminCredentials.password === 'noyanbey123') {
+    if (adminCredentials.username === 'tabrezalam' && adminCredentials.password === 'tabrezalam123') {
       setIsAdminLoggedIn(true);
       setShowAdminLogin(false);
     } else {

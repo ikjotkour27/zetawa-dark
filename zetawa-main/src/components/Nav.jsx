@@ -11,6 +11,7 @@ function Nav() {
 
   const navigationItems = [
     { name: 'Home', path: '/', icon: null },
+    { name: 'About Us', path: '/aboutus', icon: null },
     { name: 'Admin Profile', path: '/admin-profile', icon: User },
     { name: 'Certifications', path: '/certifications', icon: Users },
     { name: 'Contact Us', path: '/contact', icon: Phone },
