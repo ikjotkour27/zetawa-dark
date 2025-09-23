@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowLeft, Phone, Mail, MapPin, Clock, Send, User, MessageSquare, Award, Shield, CheckCircle, Download, ExternalLink } from 'lucide-react';
 import Nav from './Nav';
 import Footer from './Footer';
+import internpdf from '../assets/intern2.pdf'
 // https://drive.google.com/file/d/1bpJ_rbaJqRHp287CgEURkkoskv96JwyG/view?usp=drivesdk
 
 const Certifications = () => {
@@ -23,7 +24,19 @@ const Certifications = () => {
       status: 'Valid',
       duration: '3 months',
       driveLink: 'https://drive.google.com/file/d/1bpJ_rbaJqRHp287CgEURkkoskv96JwyG/view?usp=drivesdk'
+    },
+    {
+      id: 2,
+      certificateNumber: 'ZD202502', 
+      internName: 'Harshwardhan Rahul Patil',
+      course: 'Software Development',
+      issueDate: '2024-12-01',
+      completionDate: '2025-08-31',
+      status: 'Valid',
+      duration: '8 months',
+      driveLink: internpdf
     }
+
   ];
 
   const handleValidation = () => {
