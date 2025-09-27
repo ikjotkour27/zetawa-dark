@@ -116,7 +116,7 @@ const Careers = () => {
   const testimonials = [
     {
       name: "Manjeet Kumaar",
-      role: "HR TEAM",
+      role: "Buisness Management Head",
       department: "Technology",
      quote: "Zetawa Dark Private Limited, founded by Tabrej Zeta, is empowering students with real-world project experience and fostering innovation, teamwork, and mentorship. A truly impactful company shaping the next generation of tech leaders!"
 , image: img1

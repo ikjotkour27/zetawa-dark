@@ -3,6 +3,8 @@ import { ArrowLeft, Phone, Mail, MapPin, Clock, Send, User, MessageSquare, Award
 import Nav from './Nav';
 import Footer from './Footer';
 import internpdf from '../assets/intern2.pdf'
+import internpdf2 from '../assets/intern.pdf'
+
 // https://drive.google.com/file/d/1bpJ_rbaJqRHp287CgEURkkoskv96JwyG/view?usp=drivesdk
 
 const Certifications = () => {
@@ -23,7 +25,7 @@ const Certifications = () => {
       completionDate: '2025-07-05',
       status: 'Valid',
       duration: '3 months',
-      driveLink: 'https://drive.google.com/file/d/1bpJ_rbaJqRHp287CgEURkkoskv96JwyG/view?usp=drivesdk'
+      driveLink: internpdf2
     },
     {
       id: 2,
