@@ -119,9 +119,8 @@ const AdminProfile = () => {
             zIndex: 1
           }}>
             <div className="profile-image" style={{
-              width: '120px',
-              height: '120px',
-              borderRadius: '50%',
+              width: '220px',
+              height: '220px',
               border: '4px solid rgba(255, 255, 255, 0.2)',
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
               display: 'flex',
@@ -134,8 +133,7 @@ const AdminProfile = () => {
                 alt="Profile"
                 style={{
                   width: '100%',
-                  height: '100%',
-                  objectFit: 'cover'
+                  height: '100%'
                 }}
               />
             </div>
