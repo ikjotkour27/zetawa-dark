@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Mail, Instagram, Linkedin, MapPin, Send, Heart, ArrowUp } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
 function Footer() {
   const [screenSize, setScreenSize] = useState({
     isMobile: false,
@@ -75,20 +75,54 @@ function Footer() {
     }
   ];
 
-  const quickLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'Contact', path: '/contact' }
-  ];
+const quickLinks = [
+  { name: 'Home', path: '/' },
+  { name: 'About Us', path: '/aboutus' },
+  { name: 'Services', path: '/services' }, // you’ll need to create a Services route if not already
+  { name: 'Careers', path: '/careers' },
+  { name: 'Events', path: '/events' },
+  { name: 'Press Release', path: '/press-release' },
+  { name: 'Certifications', path: '/certifications' },
+  { name: 'Hire Forms', path: '/hireforms' },
+  { name: 'Contact', path: '/contact' }
+];
 
   return (
     <>
       <style>{`
-        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
 
-       
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
         @keyframes pulse {
           0%, 100% {
             transform: scale(1);
@@ -119,18 +153,7 @@ function Footer() {
           }
         }
 
-        .footer-animated {
-          animation: fadeInUp 0.8s ease-out;
-        }
-
-        .footer-section-left {
-          animation: ${isVisible ? 'slideInLeft 0.8s ease-out' : 'none'};
-        }
-
-        .footer-section-right {
-          animation: ${isVisible ? 'slideInRight 0.8s ease-out' : 'none'};
-        }
-
+      
         .social-icon {
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           cursor: pointer;
@@ -203,29 +226,16 @@ function Footer() {
 
         .divider {
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(230, 220, 220, 0.79), transparent);
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
           margin: 2rem 0;
         }
 
-        // .footer-card {
-        //   background: rgba(177, 156, 156, 0.76);
-        //   border-radius: 15px;
-        //   padding: 2rem;
-        //   backdrop-filter: blur(10px);
-        //   border: 1px solid rgba(248, 248, 248, 0.98);
-        //   transition: all 0.3s ease;
-        // }
-
-        // .footer-card:hover {
-        //   background: rgba(243, 222, 222, 0.08);
-        //   transform: translateY(-5px);
-        //   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        // }
+     
 
         .thank-you-section {
           text-align: center;
           padding: 3rem 2rem;
-          background: linear-gradient(135deg, #aa3e4bff 0%, #701920ff 50%, #55111aff 100%);
+          background: linear-gradient(135deg, #292727ff,30%, #7e3a41ff 50%, #68383eff 100%);
           position: relative;
           overflow: hidden;
         }
@@ -237,8 +247,8 @@ function Footer() {
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(209, 201, 201, 0.79), transparent);
-          animation: shimmer 2s infinite;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+          animation: shimmer 3s infinite;
         }
 
         @keyframes shimmer {
@@ -248,7 +258,7 @@ function Footer() {
 
         .heart-beat {
           display: inline-block;
-          animation: pulse 1s ease-in-out infinite;
+          animation: pulse 2s ease-in-out infinite;
           color: #ff6b6b;
         }
 
@@ -266,31 +276,11 @@ function Footer() {
         }
       `}</style>
 
-      {/* Thank You Section */}
-      <div className="thank-you-section">
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          <h2 style={{ 
-            fontSize: isMobile ? '1.8rem' : '2.5rem', 
-            fontWeight: 'bold',
-            marginBottom: '1rem',
-            color: 'white'
-          }}>
-            Thank You for Visiting! <Heart className="heart-beat" style={{ display: 'inline', marginLeft: '10px' }} size={isMobile ? 28 : 36} />
-          </h2>
-          <p style={{ 
-            fontSize: isMobile ? '1rem' : '1.2rem',
-            color: 'rgba(255,255,255,0.9)',
-            maxWidth: '800px',
-            margin: '0 auto'
-          }}>
-            We appreciate your time exploring our services. Let's build something amazing together!
-          </p>
-        </div>
-      </div>
+     
 
       {/* Main Footer */}
       <div className="footer-animated" style={{ 
-        background: 'linear-gradient(180deg, #8b7272ff 0%, #530808ff 100%)',
+        background: 'linear-gradient(180deg, #2a2a2aff 30%, #1a1a1a 100%)',
         color: 'white', 
         padding: isMobile ? '2rem 0' : '4rem 0 2rem 0',
         position: 'relative'
@@ -341,6 +331,28 @@ function Footer() {
               </div>
             </div> */}
 
+             {/* Thank You Section */}
+      <div className="thank-you-section">
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <h2 style={{ 
+            fontSize: isMobile ? '1.8rem' : '2.5rem', 
+            fontWeight: 'bold',
+            marginBottom: '1rem',
+            color: 'white'
+          }}>
+            Thank You for Visiting! <Heart className="heart-beat" style={{ display: 'inline', marginLeft: '10px' }} size={isMobile ? 28 : 36} />
+          </h2>
+          <p style={{ 
+            fontSize: isMobile ? '1rem' : '1.2rem',
+            color: 'rgba(255,255,255,0.9)',
+            maxWidth: '800px',
+            margin: '0 auto'
+          }}>
+            We appreciate your time exploring our services. Let's build something amazing together!
+          </p>
+        </div>
+      </div>
+
             {/* Quick Links */}
             <div className="footer-section-right">
               <h3 style={{ 
@@ -352,20 +364,21 @@ function Footer() {
                 Quick Links
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                {quickLinks.map((link, index) => (
-                  <a
-                    key={index}
-                    href={link.path}
-                    className="quick-link"
+        
+                {quickLinks.map(link => (
+                  <Link 
+                  key={link.name} 
+                  to={link.path}
+                  className="quick-link"
                     style={{
-                      color: '#b6a1a1ff',
+                      color: '#adb5bd',
                       textDecoration: 'none',
                       fontSize: '0.95rem'
-                    }}
-                  >
+                    }}>
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
+
               </div>
             </div>
 
@@ -407,10 +420,9 @@ function Footer() {
                   >
                     {iconMap[social.name]}
                   </a>
-                  
                 ))}
               </div>
-              <div style={{ color: '#e6e8eaff', fontSize: '0.9rem' }}>
+              <div style={{ color: '#adb5bd', fontSize: '0.9rem' }}>
                 <div style={{ marginBottom: '0.5rem' }}>
                   <Phone size={16} style={{ display: 'inline', marginRight: '8px' }} />
                   7004265718
@@ -434,10 +446,10 @@ function Footer() {
             gap: '1rem',
             textAlign: isMobile ? 'center' : 'left'
           }}>
-            <div style={{ fontSize: '0.9rem' }}>
+            <div style={{ fontSize: '0.9rem', color: '#adb5bd' }}>
               © 2025 ZETAWA DARK PRIVATE LIMITED. All rights reserved.
             </div>
-            <div style={{ fontSize: '0.85rem', color: '#ffffffff' }}>
+            <div style={{ fontSize: '0.85rem', color: '#6c757d' }}>
               Equal opportunity employer committed to diversity and inclusion.
             </div>
           </div>
