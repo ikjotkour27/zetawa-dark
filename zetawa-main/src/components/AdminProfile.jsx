@@ -119,8 +119,8 @@ const AdminProfile = () => {
             zIndex: 1
           }}>
             <div className="profile-image" style={{
-              width: '220px',
-              height: '220px',
+              width: '440px',
+              height: '440px',
               border: '4px solid rgba(255, 255, 255, 0.2)',
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
               display: 'flex',
@@ -503,6 +503,7 @@ const AdminProfile = () => {
           </div>
         </div>
       </div>
+      <Footer/>
       
       <style jsx>{`
         * {
