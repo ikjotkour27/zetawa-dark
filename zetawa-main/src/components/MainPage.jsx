@@ -206,6 +206,30 @@ const MainPage = () => {
             >
               About Us
             </button>
+            <button 
+              style={{
+                backgroundColor: 'transparent',
+                color: 'white',
+                border: '2px solid white',
+                padding: '1rem 2rem',
+                borderRadius: '8px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              onClick={() => navigate('/client-satisfaction')}
+              onMouseOver={(e) => {
+                e.target.style.backgroundColor = 'white';
+                e.target.style.color = 'var(--primary-red)';
+              }}
+              onMouseOut={(e) => {
+                e.target.style.backgroundColor = 'transparent';
+                e.target.style.color = 'white';
+              }}
+            >
+              Reviews
+            </button>
           </div>
         </div>
       </header>

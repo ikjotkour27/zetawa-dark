@@ -9,7 +9,7 @@ import Events from './components/Events';
 import PressRelease from './components/PressRelease';
 import Hireforms from './components/Hireforms';
 import AboutUs from './components/AboutUs';
-
+import ClientSatisfaction from './components/ClientSatisfaction';
 // Scroll-to-top helper component
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -34,6 +34,8 @@ const App = () => {
           <Route path="/press-release" element={<PressRelease />} />
           <Route path="/hireforms" element={<Hireforms />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/client-satisfaction" element={<ClientSatisfaction />} />
+
         </Routes>
       </div>
     </Router>
