@@ -4,16 +4,11 @@ import Nav from './Nav';
 import Footer from './Footer';
 import internpdf from '../assets/intern2.pdf'
 import internpdf2 from '../assets/intern.pdf'
-import { useLocation } from 'react-router-dom';
 
 // https://drive.google.com/file/d/1bpJ_rbaJqRHp287CgEURkkoskv96JwyG/view?usp=drivesdk
 
 const Certifications = () => {
 
-  const {pathname} = useLocation();
-  useEffect(()=>{
-    window.scrollTo(0,0);
-  },[pathname])
   const [searchCertNumber, setSearchCertNumber] = useState('');
   const [validationResult, setValidationResult] = useState(null);
   const [adminCredentials, setAdminCredentials] = useState({ username: '', password: '' });
