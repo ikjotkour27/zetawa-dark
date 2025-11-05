@@ -24,6 +24,5 @@ const reviewSchema = new mongoose.Schema({
   },
 });
 
-// Model name should be singular and meaningful (e.g., "Review")
 const Review = mongoose.model("Review", reviewSchema);
 export default Review;

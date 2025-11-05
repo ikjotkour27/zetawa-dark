@@ -5,7 +5,9 @@ import { Menu, X, ChevronRight, Users, Briefcase, Calendar, Bell, Phone, User, A
 import Nav from './Nav';
 import Footer from './Footer';
 // import Hireforms from './Hireforms';
-
+import img1 from '../assets/1.png';
+import img2 from '../assets/2.png';
+import img3 from '../assets/3.png';
 
 
 const MainPage = () => {
@@ -22,17 +24,20 @@ const MainPage = () => {
     {
       title: "Design",
       description: "Our web design team has ample years of experience in the core areas of design to build a website that you need.",
-      icon: "🎨"
+      icon: "🎨",
+      img:img1
     },
     {
       title: "Development",
       description: "Looking out for customized solutions for your websites? Our team will develop and deliver a website that'll serve your purpose.",
-      icon: "💻"
+      icon: "💻",
+      img:img2
     },
     {
       title: "Marketing",
       description: "With researched digital marketing, we will ensure that new customers and clients are able to find your business",
-      icon: "📈" 
+      icon: "📈" ,
+      img:img3
     }
   ];
 
@@ -254,7 +259,7 @@ const MainPage = () => {
         </div>
            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
 
-        <button 
+        {/* <button 
               style={{
                 backgroundColor: 'var(--primary-red)',
                 color: 'white',
@@ -277,7 +282,7 @@ const MainPage = () => {
               }}
             >
               Client Reviews
-            </button>
+            </button> */}
              </div>
       </section>
 
@@ -319,7 +324,7 @@ const MainPage = () => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
-                onClick={() => navigate('/contact')}
+                onClick={() => window.open(service.img, '_blank')}
               >
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>
                   {service.icon}

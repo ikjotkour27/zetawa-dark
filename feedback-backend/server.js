@@ -13,6 +13,7 @@ app.use(express.json());
 
 connectDB();
 
+// routes , review
 app.use("/api/reviews", reviewRoutes);
 
 app.get("/", (req, res) => {

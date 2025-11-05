@@ -4,6 +4,7 @@ import Review from "../models/Review.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
+  // getting data from the database 
   try {
     const reviews = await Review.find().sort({ date: -1 });
     res.json(reviews);
@@ -13,6 +14,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  // taking data from body of req and adding it to the modal in database
   try {
     const { name, company, rating, comment } = req.body;
     const review = new Review({ name, company, rating, comment });
