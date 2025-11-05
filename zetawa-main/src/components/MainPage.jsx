@@ -259,7 +259,7 @@ const MainPage = () => {
         </div>
            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
 
-        {/* <button 
+        <button 
               style={{
                 backgroundColor: 'var(--primary-red)',
                 color: 'white',
@@ -282,7 +282,7 @@ const MainPage = () => {
               }}
             >
               Client Reviews
-            </button> */}
+            </button>
              </div>
       </section>
 
